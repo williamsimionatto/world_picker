@@ -1,21 +1,60 @@
-library world_picker;
+library world_picker_widgets;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:world_picker/world_picker.dart';
 
+/// A customizable widget that displays a country selector with flag and metadata.
+///
+/// This widget shows a tappable interface displaying the selected country's flag
+/// and optional information (ISO code, name, currency, dial code). When tapped,
+/// it opens a bottom sheet with a searchable list of all countries.
+///
+/// Example usage:
+/// ```dart
+/// WorldPickerIcon(
+///   onSelect: (country) {
+///     print('Selected: ${country.name}');
+///   },
+///   selectedCountry: selectedCountry,
+///   showIsoCode: true,
+///   showDialCode: true,
+/// )
+/// ```
 class WorldPickerIcon extends StatelessWidget {
+  /// Callback function that is called when a country is selected.
+  /// The selected [Country] object is passed as a parameter.
   final ValueChanged<Country> onSelect;
+
+  /// The currently selected country. If null, displays a default placeholder.
   final Country? selectedCountry;
+
+  /// The size of the flag icon. Defaults to 32.0.
   final double? size;
+
+  /// Whether to display the ISO country code (e.g., "US"). Defaults to false.
   final bool showIsoCode;
+
+  /// Whether to display the country name (e.g., "United States"). Defaults to false.
   final bool showName;
+
+  /// Whether to display the currency code (e.g., "USD"). Defaults to false.
   final bool showCurrencyCode;
+
+  /// Whether to display the international dial code (e.g., "+1"). Defaults to false.
   final bool showDialCode;
+
+  /// The default country ISO code to use when no country is selected. Defaults to "US".
   final String defaultCountryIsoCode;
+
+  /// Configuration options for customizing the country picker dialog.
   final WorldPickerOptions options;
 
+  /// Creates a [WorldPickerIcon] widget.
+  ///
+  /// The [onSelect] callback is required and will be called when a user
+  /// selects a country from the picker dialog.
   const WorldPickerIcon({
     super.key,
     required this.onSelect,

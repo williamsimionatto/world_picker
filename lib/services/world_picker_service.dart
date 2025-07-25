@@ -2,27 +2,62 @@ import 'package:world_picker/data/data.dart';
 
 import '../model/model.dart';
 
-/// Service responsible for loading and managing country data.
+/// A comprehensive service for managing and querying world country data.
+///
+/// This service provides static methods to access country information,
+/// search and filter countries by various criteria, and retrieve
+/// related geographical and cultural data.
+///
+/// All methods are optimized with caching for better performance.
+/// The country data includes all 195 UN-recognized countries with
+/// complete metadata including flags, currencies, languages, and more.
+///
+/// Example usage:
+/// ```dart
+/// // Get a specific country
+/// Country? brazil = WorldPickerService.fromIsoCode('BR');
+///
+/// // Search countries
+/// List<Country> results = WorldPickerService.fromCountryName('united');
+///
+/// // Get all countries in a continent
+/// List<Country> europeanCountries = WorldPickerService.fromContinentCode('EU');
+/// ```
 class WorldPickerService {
-  /// Cached list of countries to avoid repeated file reads.
+  /// Internal cached list of countries to avoid repeated data loading.
+  /// This improves performance after the first access.
   static List<Country>? _countries;
 
+  /// Gets all countries with caching for improved performance.
+  /// Returns a sorted list of all available countries.
   static List<Country> get countries => loadCountries();
 
-  /// Loads all countries from the JSON asset file.
+  /// Loads and returns all countries from the data source.
   ///
-  /// Returns a list of [Country] objects parsed from the JSON data.
-  /// The result is cached after the first load for better performance.
+  /// The countries are automatically sorted alphabetically by name.
+  /// Results are cached after the first load to improve performance
+  /// on subsequent calls.
+  ///
+  /// Returns a [List<Country>] containing all 195 UN-recognized countries.
   static List<Country> loadCountries() {
     if (_countries != null) return _countries!;
 
     return allCountries()..sort((a, b) => a.name.compareTo(b.name));
   }
 
-  /// Finds a country by its ISO code.
+  /// Finds a specific country by its ISO 3166-1 alpha-2 code.
   ///
-  /// [isoCode] - The 2-letter ISO country code (e.g., 'BR', 'US').
-  /// Returns the [Country] if found, null otherwise.
+  /// The search is case-insensitive, so both 'BR' and 'br' will work.
+  ///
+  /// [isoCode] The 2-letter ISO country code (e.g., 'BR' for Brazil, 'US' for United States).
+  ///
+  /// Returns the matching [Country] object if found, null otherwise.
+  ///
+  /// Example:
+  /// ```dart
+  /// Country? usa = WorldPickerService.fromIsoCode('US');
+  /// Country? brazil = WorldPickerService.fromIsoCode('br'); // Case-insensitive
+  /// ```
   static Country? fromIsoCode(String isoCode) {
     final countries = loadCountries();
     try {
@@ -34,10 +69,27 @@ class WorldPickerService {
     }
   }
 
-  /// Finds countries by continent code.
+  /// Retrieves all countries within a specific continent.
   ///
-  /// [continentCode] - The continent code (e.g., 'SA', 'EU', 'AS').
-  /// Returns a list of countries in the specified continent.
+  /// The search is case-insensitive and uses continent codes:
+  /// - 'AF' for Africa
+  /// - 'AS' for Asia
+  /// - 'EU' for Europe
+  /// - 'NA' for North America
+  /// - 'SA' for South America
+  /// - 'OC' for Oceania
+  /// - 'CA' for Central America
+  /// - 'CB' for Caribbean
+  ///
+  /// [continentCode] The continent code to filter by.
+  ///
+  /// Returns a [List<Country>] of all countries in the specified continent.
+  ///
+  /// Example:
+  /// ```dart
+  /// List<Country> europeanCountries = WorldPickerService.fromContinentCode('EU');
+  /// List<Country> asianCountries = WorldPickerService.fromContinentCode('as');
+  /// ```
   static List<Country> fromContinentCode(String continentCode) {
     final countries = loadCountries();
     return countries
@@ -46,10 +98,24 @@ class WorldPickerService {
         .toList();
   }
 
-  /// Searches countries by name (case-insensitive partial match).
+  /// Searches for countries by name using case-insensitive partial matching.
   ///
-  /// [query] - The search query string.
-  /// Returns a list of countries whose names contain the query string.
+  /// This method performs a substring search on country names, making it
+  /// useful for implementing search functionality with auto-completion.
+  ///
+  /// [query] The search query string. Can be a partial country name.
+  ///
+  /// Returns a [List<Country>] of countries whose names contain the query.
+  /// If the query is empty, returns all countries.
+  ///
+  /// Example:
+  /// ```dart
+  /// List<Country> results = WorldPickerService.fromCountryName('united');
+  /// // Returns: United States, United Kingdom, United Arab Emirates
+  ///
+  /// List<Country> allCountries = WorldPickerService.fromCountryName('');
+  /// // Returns: All countries
+  /// ```
   static List<Country> fromCountryName(String query) {
     if (query.isEmpty) return loadCountries();
 
@@ -61,9 +127,19 @@ class WorldPickerService {
         .toList();
   }
 
-  /// Gets all unique regions from the countries data.
+  /// Retrieves all unique continents from the countries dataset.
   ///
-  /// Returns a list of unique [Continent] objects.
+  /// This method extracts and deduplicates all continent information
+  /// from the country data, useful for creating continent filters
+  /// or geographical categorization.
+  ///
+  /// Returns a [List<Continent>] of all unique continents.
+  ///
+  /// Example:
+  /// ```dart
+  /// List<Continent> allContinents = WorldPickerService.continents();
+  /// // Returns: Africa, Asia, Europe, North America, etc.
+  /// ```
   static List<Continent> continents() {
     final countries = loadCountries();
     final continentMap = <String, Continent>{};
@@ -75,9 +151,19 @@ class WorldPickerService {
     return continentMap.values.toList();
   }
 
-  /// Gets all unique languages from the countries data.
+  /// Retrieves all unique languages from the countries dataset.
   ///
-  /// Returns a list of unique [Language] objects.
+  /// This method extracts and deduplicates all language information
+  /// from all countries, useful for language-based filtering or
+  /// linguistic analysis.
+  ///
+  /// Returns a [List<Language>] of all unique languages found across all countries.
+  ///
+  /// Example:
+  /// ```dart
+  /// List<Language> allLanguages = WorldPickerService.languages();
+  /// // Returns: English, Spanish, French, Arabic, etc.
+  /// ```
   static List<Language> languages() {
     final countries = loadCountries();
     final languageMap = <String, Language>{};
@@ -91,9 +177,19 @@ class WorldPickerService {
     return languageMap.values.toList();
   }
 
-  /// Gets all unique currencies from the countries data.
+  /// Retrieves all unique currencies from the countries dataset.
   ///
-  /// Returns a list of unique [Currency] objects.
+  /// This method extracts and deduplicates all currency information
+  /// from all countries, useful for financial applications or
+  /// currency-based filtering.
+  ///
+  /// Returns a [List<Currency>] of all unique currencies found across all countries.
+  ///
+  /// Example:
+  /// ```dart
+  /// List<Currency> allCurrencies = WorldPickerService.currencies();
+  /// // Returns: USD, EUR, GBP, JPY, etc.
+  /// ```
   static List<Currency> currencies() {
     final countries = loadCountries();
     final currencyMap = <String, Currency>{};
