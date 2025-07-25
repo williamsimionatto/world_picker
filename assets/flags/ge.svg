@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 200"><defs><g id="c"><clipPath id="a"><path d="M-109 104a104 104 0 000-208h218a104 104 0 000 208z"/></clipPath><path id="b" d="M-55 74a55 55 0 01110 0V-74a55 55 0 01-110 0z" clip-path="url(#a)"/><use xlink:href="#b" transform="rotate(90)"/></g></defs><path fill="#fff" d="M0 0h300v200H0z"/><path d="M130 0v80H0v40h130v80h40v-80h130V80H170V0h-40z" fill="red"/><use xlink:href="#c" transform="translate(64.45 39.45)" fill="red"/><use xlink:href="#c" transform="translate(235.55 160.55)" fill="red"/><use xlink:href="#c" transform="translate(235.55 39.45)" fill="red"/><use xlink:href="#c" transform="translate(64.45 160.55)" fill="red"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="3.975 0 15 15">
+	<path fill="#FFFFFF" d="M0.8,0h21v15h-21V0z"/>
+	<path fill="#eb000e" d="M9.8,6H0v3h9.8v6h3V9h9.8V6h-9.8V0h-3V6z"/>
+	<path fill="#eb000e" d="M17.3,2.7l-0.2-1.2h1l-0.2,1.2l1.2-0.2v1l-1.2-0.2l0.2,1.2h-1l0.2-1.2l-1.2,0.2v-1L17.3,2.7z M4.6,2.7L4.4,1.5
+		h1L5.2,2.7l1.2-0.2v1L5.2,3.3l0.2,1.2h-1l0.2-1.2L3.4,3.5v-1C3.4,2.5,4.6,2.7,4.6,2.7z M4.6,11.7l-0.2-1.2h1l-0.2,1.2l1.2-0.2v1
+		l-1.2-0.2l0.2,1.2h-1l0.2-1.2l-1.2,0.2v-1C3.4,11.5,4.6,11.7,4.6,11.7z M17.3,11.7l-0.2-1.2h1l-0.2,1.2l1.2-0.2v1l-1.2-0.2l0.2,1.2
+		h-1l0.2-1.2l-1.2,0.2v-1L17.3,11.7z"/>
+</svg>

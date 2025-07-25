@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 81 54"><path fill="#4189DD" d="M0 0h81v54H0z"/><g transform="matrix(13 0 0 13 40.5 27)"><g id="b"><path id="a" fill="#FFF" transform="rotate(18 3.157 -.5)" d="M0 0v1h.5z"/><use xlink:href="#a" transform="scale(-1 1)"/></g><use xlink:href="#b" transform="rotate(72)"/><use xlink:href="#b" transform="rotate(-72)"/><use xlink:href="#b" transform="rotate(144)"/><use xlink:href="#b" transform="rotate(-144)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="85.333 85.333 341.333 341.333">
+<rect y="85.331" fill="#338AF3" width="512" height="341.337"/>
+<polygon fill="#FFFFFF" points="256,157.273 278.663,227.021 352,227.021 292.668,270.127 315.332,339.876 256,296.769   196.668,339.876 219.332,270.127 160,227.021 233.337,227.021 "/>
+</svg>

@@ -1,14 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-4 -4 24 16">
-<path d="M20,12H-4V-4H20z" fill="#d52b1e"/>
-<path d="M4,4H20V-4H-4z" fill="#fff"/>
-<path d="M4,4H-4V-4H4z" fill="#0039a6"/>
-<g id="f">
-<g id="t">
-<path d="M0,-2V0H1z" fill="#fff" transform="rotate(18,0,-2)" id="o"/>
-<use xlink:href="#o" transform="scale(-1,1)"/>
-</g>
-<use xlink:href="#t" transform="rotate(72)"/>
-</g>
-<use xlink:href="#t" transform="rotate(-72)"/>
-<use xlink:href="#f" transform="rotate(144)"/>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="85.5 0 342 342">
+<rect y="0" fill="#D80027" width="513" height="342"/>
+<rect x="196" y="0" fill="#FFFFFF" width="317" height="171"/>
+<rect y="0" fill="#0037A1" width="196" height="171"/>
+<polygon fill="#FFFFFF" points="98,24.5 113.1,71 162,71 122.4,99.7 137.6,146.2 98,117.5 58.4,146.2 73.6,99.7 34,71 82.9,71 "/>
 </svg>

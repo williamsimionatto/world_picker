@@ -1,15 +1,43 @@
-/// Represents a geographical region of a country.
-class Region {
-  /// The region code (e.g., 'SA' for South America).
+/// Represents a geographical continent.
+class Continent {
+  /// The continent code (e.g., 'SA' for South America).
   final String code;
 
-  /// The name of the region (e.g., 'South America').
+  /// The name of the continent (e.g., 'South America').
   final String name;
 
-  Region({
+  Continent({
     required this.code,
     required this.name,
   });
+
+  /// Creates a Continent instance from a JSON map.
+  factory Continent.fromJson(Map<String, dynamic> json) {
+    return Continent(
+      code: json['code'] as String,
+      name: json['name'] as String,
+    );
+  }
+
+  /// Converts the Region instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'code': code,
+      'name': name,
+    };
+  }
+
+  @override
+  String toString() => 'Region(code: $code, name: $name)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Continent && other.code == code && other.name == name;
+  }
+
+  @override
+  int get hashCode => code.hashCode ^ name.hashCode;
 }
 
 /// Represents a language spoken in a country.
@@ -28,6 +56,40 @@ class Language {
     required this.name,
     required this.nativeName,
   });
+
+  /// Creates a Language instance from a JSON map.
+  factory Language.fromJson(Map<String, dynamic> json) {
+    return Language(
+      code: json['code'] as String,
+      name: json['name'] as String,
+      nativeName: json['nativeName'] as String,
+    );
+  }
+
+  /// Converts the Language instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'code': code,
+      'name': name,
+      'nativeName': nativeName,
+    };
+  }
+
+  @override
+  String toString() =>
+      'Language(code: $code, name: $name, nativeName: $nativeName)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Language &&
+        other.code == code &&
+        other.name == name &&
+        other.nativeName == nativeName;
+  }
+
+  @override
+  int get hashCode => code.hashCode ^ name.hashCode ^ nativeName.hashCode;
 }
 
 /// Represents a currency used in a country.
@@ -46,6 +108,39 @@ class Currency {
     required this.name,
     required this.symbol,
   });
+
+  /// Creates a Currency instance from a JSON map.
+  factory Currency.fromJson(Map<String, dynamic> json) {
+    return Currency(
+      code: json['code'] as String,
+      name: json['name'] as String,
+      symbol: json['symbol'] as String,
+    );
+  }
+
+  /// Converts the Currency instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'code': code,
+      'name': name,
+      'symbol': symbol,
+    };
+  }
+
+  @override
+  String toString() => 'Currency(code: $code, name: $name, symbol: $symbol)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Currency &&
+        other.code == code &&
+        other.name == name &&
+        other.symbol == symbol;
+  }
+
+  @override
+  int get hashCode => code.hashCode ^ name.hashCode ^ symbol.hashCode;
 }
 
 /// Represents a country with its details.
@@ -56,8 +151,8 @@ class Country {
   /// The ISO 3166-1 alpha-2 country code (e.g., 'BR').
   final String isoCode;
 
-  /// The region where the country is located.
-  final Region region;
+  /// The continent where the country is located.
+  final Continent continent;
 
   /// The list of languages spoken in the country.
   final List<Language> languages;
@@ -83,13 +178,35 @@ class Country {
   Country({
     required this.isoCode,
     required this.name,
-    required this.region,
+    required this.continent,
     required this.languages,
     required this.currencies,
     required this.dialCode,
     required this.phonePattern,
     required this.zipCodePattern,
-    required this.timezones,
+    this.timezones = const [],
     required this.flagAssetPath,
   });
+
+  /// Returns the primary language (first in the list).
+  Language? get primaryLanguage =>
+      languages.isNotEmpty ? languages.first : null;
+
+  /// Returns the primary currency (first in the list).
+  Currency? get primaryCurrency =>
+      currencies.isNotEmpty ? currencies.first : null;
+
+  @override
+  String toString() {
+    return 'Country(name: $name, isoCode: $isoCode, continent: ${continent.name})';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Country && other.isoCode == isoCode;
+  }
+
+  @override
+  int get hashCode => isoCode.hashCode;
 }

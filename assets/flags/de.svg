@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 3"><path d="M0 0h5v3H0z"/><path fill="#D00" d="M0 1h5v2H0z"/><path fill="#FFCE00" d="M0 2h5v1H0z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="85.5 0 342 342">
+	<rect y="0" fill="#D80027" width="513" height="342"/>
+	<rect y="0" fill="#000" width="513" height="114"/>
+	<rect y="228" fill="#FFDA44" width="513" height="114"/>
+</svg>

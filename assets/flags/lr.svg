@@ -1,15 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 209 110">
-<rect fill="#bf0a30" width="209" height="110"/>
-<path d="M0,15H209 M0,35H209 M0,55H209 M0,75H209 M0,95H209" stroke="#fff" stroke-width="10"/>
-<rect fill="#002868" width="50" height="50"/>
-<g transform="translate(25,25) scale(15)">
-<g id="B">
-<polygon id="A" fill="#fff" points="0,0 0,1 .5,1" transform="translate(0,-1) rotate(18)"/>
-<use xlink:href="#A" transform="scale(-1,1)"/>
-</g>
-<use xlink:href="#B" transform="rotate(72)"/>
-<use xlink:href="#B" transform="rotate(-72)"/>
-<use xlink:href="#B" transform="rotate(144)"/>
-<use xlink:href="#B" transform="rotate(-144)"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5.13 0 342 342" >
+	<rect fill="#FFFFFF" x="0" y="0" width="513" height="342"/>
+	<g fill="#bf0a30">
+		<rect x="0" y="0" width="513" height="31.1"/>
+		<rect x="0" y="62.2" width="513" height="31.1"/>
+		<rect x="0" y="124.5" width="513" height="31.1"/>
+		<rect x="0" y="186.8" width="513" height="31.1"/>
+		<rect x="0" y="249.3" width="513" height="31.1"/>
+		<rect x="0" y="310.9" width="513" height="31.1"/>
+	</g>
+	<rect fill="#002868" width="155.6" height="155.6"/>
+	<polygon fill="#FFFFFF" points="77.8,30.2 88.5,63.1 123.1,63.1 95.1,83.5 105.8,116.4 77.8,96.1 49.8,116.4 60.5,83.5 32.5,63.1
+	  67.1,63.1 "/>
 </svg>

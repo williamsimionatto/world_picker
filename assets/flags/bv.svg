@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16"><path fill="#ba0c2f" d="M0 0h22v16H0z"/><g fill="#fff"><path d="M6 0h4v16H6z"/><path d="M0 6h22v4H0z"/></g><g fill="#00205b"><path d="M7 0h2v16H7z"/><path d="M0 7h22v2H0z"/></g></svg>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="121 33.333 733.333 733.333">
+<rect width="1100" height="800" fill="#ef2b2d"/>
+<rect width="200" height="800" x="300" fill="#ffffff"/>
+<rect width="1100" height="200" y="300" fill="#ffffff"/>
+<rect width="100" height="800" x="350" fill="#002868"/>
+<rect width="1100" height="100" y="350" fill="#002868"/>
+</svg>

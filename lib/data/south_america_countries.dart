@@ -1,0 +1,182 @@
+import 'package:world_picker/world_picker.dart';
+
+List<Country> southAmericaCountries() {
+  final Continent continent = Continent(
+    code: 'SA',
+    name: 'South America',
+  );
+
+  return [
+    Country(
+      isoCode: 'AR',
+      name: 'Argentina',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'ARS', name: 'Argentine Peso', symbol: '\$')],
+      dialCode: '+54',
+      phonePattern: r'^\+54\d{10}$',
+      zipCodePattern: r'^\d{4}$',
+      timezones: ['America/Argentina/Buenos_Aires'],
+      flagAssetPath: 'packages/world_picker/assets/flags/AR.svg',
+    ),
+    Country(
+      isoCode: 'BO',
+      name: 'Bolivia',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'BOB', name: 'Boliviano', symbol: 'Bs')],
+      dialCode: '+591',
+      phonePattern: r'^\+591\d{8}$',
+      zipCodePattern: r'^\d{4}$',
+      timezones: ['America/La_Paz'],
+      flagAssetPath: 'packages/world_picker/assets/flags/BO.svg',
+    ),
+    Country(
+      isoCode: 'BR',
+      name: 'Brazil',
+      continent: continent,
+      languages: [
+        Language(code: 'pt', name: 'Portuguese', nativeName: 'Português')
+      ],
+      currencies: [
+        Currency(code: 'BRL', name: 'Brazilian Real', symbol: 'R\$')
+      ],
+      dialCode: '+55',
+      phonePattern: r'^\+55\d{10,11}$',
+      zipCodePattern: r'^\d{5}-\d{3}$',
+      timezones: ['America/Sao_Paulo'],
+      flagAssetPath: 'packages/world_picker/assets/flags/BR.svg',
+    ),
+    Country(
+      isoCode: 'CL',
+      name: 'Chile',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'CLP', name: 'Chilean Peso', symbol: '\$')],
+      dialCode: '+56',
+      phonePattern: r'^\+56\d{9}$',
+      zipCodePattern: r'^\d{7}$',
+      timezones: ['America/Santiago'],
+      flagAssetPath: 'packages/world_picker/assets/flags/CL.svg',
+    ),
+    Country(
+      isoCode: 'CO',
+      name: 'Colombia',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'COP', name: 'Colombian Peso', symbol: '\$')],
+      dialCode: '+57',
+      phonePattern: r'^\+57\d{10}$',
+      zipCodePattern: r'^\d{6}$',
+      timezones: ['America/Bogota'],
+      flagAssetPath: 'packages/world_picker/assets/flags/CO.svg',
+    ),
+    Country(
+      isoCode: 'EC',
+      name: 'Ecuador',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'USD', name: 'US Dollar', symbol: '\$')],
+      dialCode: '+593',
+      phonePattern: r'^\+593\d{9}$',
+      zipCodePattern: r'^\d{6}$',
+      timezones: ['America/Guayaquil'],
+      flagAssetPath: 'packages/world_picker/assets/flags/EC.svg',
+    ),
+    Country(
+      isoCode: 'GF',
+      name: 'French Guiana',
+      continent: continent,
+      languages: [Language(code: 'fr', name: 'French', nativeName: 'Français')],
+      currencies: [Currency(code: 'EUR', name: 'Euro', symbol: '€')],
+      dialCode: '+594',
+      phonePattern: r'^\+594\d{9}$',
+      zipCodePattern: r'^\d{5}$',
+      timezones: ['America/Cayenne'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GF.svg',
+    ),
+    Country(
+      isoCode: 'GY',
+      name: 'Guyana',
+      continent: continent,
+      languages: [Language(code: 'en', name: 'English', nativeName: 'English')],
+      currencies: [
+        Currency(code: 'GYD', name: 'Guyanese Dollar', symbol: '\$')
+      ],
+      dialCode: '+592',
+      phonePattern: r'^\+592\d{7}$',
+      zipCodePattern: r'^\d{5}$',
+      timezones: ['America/Guyana'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GY.svg',
+    ),
+    Country(
+      isoCode: 'PE',
+      name: 'Peru',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'PEN', name: 'Sol', symbol: 'S/.')],
+      dialCode: '+51',
+      phonePattern: r'^\+51\d{9}$',
+      zipCodePattern: r'^\d{5}$',
+      timezones: ['America/Lima'],
+      flagAssetPath: 'packages/world_picker/assets/flags/PE.svg',
+    ),
+    Country(
+      isoCode: 'PY',
+      name: 'Paraguay',
+      continent: continent,
+      languages: [
+        Language(code: 'es', name: 'Spanish', nativeName: 'Español'),
+        Language(code: 'gn', name: 'Guarani', nativeName: "Avañe'ẽ"),
+      ],
+      currencies: [Currency(code: 'PYG', name: 'Guarani', symbol: '₲')],
+      dialCode: '+595',
+      phonePattern: r'^\+595\d{9}$',
+      zipCodePattern: r'^\d{4}$',
+      timezones: ['America/Asuncion'],
+      flagAssetPath: 'packages/world_picker/assets/flags/PY.svg',
+    ),
+    Country(
+      isoCode: 'SR',
+      name: 'Suriname',
+      continent: continent,
+      languages: [
+        Language(code: 'nl', name: 'Dutch', nativeName: 'Nederlands')
+      ],
+      currencies: [
+        Currency(code: 'SRD', name: 'Surinamese Dollar', symbol: '\$')
+      ],
+      dialCode: '+597',
+      phonePattern: r'^\+597\d{7}$',
+      zipCodePattern: r'^\d{5}$',
+      timezones: ['America/Paramaribo'],
+      flagAssetPath: 'packages/world_picker/assets/flags/SR.svg',
+    ),
+    Country(
+      isoCode: 'UY',
+      name: 'Uruguay',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [Currency(code: 'UYU', name: 'Uruguayan Peso', symbol: '\$')],
+      dialCode: '+598',
+      phonePattern: r'^\+598\d{8}$',
+      zipCodePattern: r'^\d{5}$',
+      timezones: ['America/Montevideo'],
+      flagAssetPath: 'packages/world_picker/assets/flags/UY.svg',
+    ),
+    Country(
+      isoCode: 'VE',
+      name: 'Venezuela',
+      continent: continent,
+      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
+      currencies: [
+        Currency(code: 'VES', name: 'Venezuelan Bolívar', symbol: 'Bs.')
+      ],
+      dialCode: '+58',
+      phonePattern: r'^\+58\d{10}$',
+      zipCodePattern: r'^\d{4}$',
+      timezones: ['America/Caracas'],
+      flagAssetPath: 'packages/world_picker/assets/flags/VE.svg',
+    ),
+  ];
+}

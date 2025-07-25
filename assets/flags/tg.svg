@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 809 500"><path fill="#006a4e" d="M0 0h809v500H0z"/><path fill="#ffce00" d="M0 100h809v100H0zm0 200h809v100H0z"/><path fill="#d21034" d="M0 0h300v300H0z"/><g transform="translate(150 150)" fill="#fff"><g id="b"><path id="a" d="M0-95V0h50" transform="rotate(18 0 -95)"/><use xlink:href="#a" transform="scale(-1 1)"/></g><use xlink:href="#b" transform="rotate(72)"/><use xlink:href="#b" transform="rotate(144)"/><use xlink:href="#b" transform="rotate(216)"/><use xlink:href="#b" transform="rotate(288)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 85.333 341.333 341.333">
+<rect y="85.337" fill="#FFDA44" width="512" height="341.326"/>
+<g>
+	<rect y="85.337" fill="#496E2D" width="512" height="68.263"/>
+	<rect y="358.4" fill="#496E2D" width="512" height="68.263"/>
+	<rect y="221.863" fill="#496E2D" width="512" height="68.263"/>
+</g>
+<rect y="85.337" fill="#D80027" width="204.054" height="204.054"/>
+<polygon fill="#FFFFFF" points="102.026,133.938 115.286,174.75 158.202,174.75 123.484,199.976 136.744,240.79   102.026,215.566 67.307,240.79 80.57,199.976 45.852,174.75 88.765,174.75 "/>
+</svg>
