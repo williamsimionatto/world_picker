@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:world_picker/world_picker.dart';
 
+enum CountryFlagShape { circle, square }
+
 class CountryFlag extends StatelessWidget {
   const CountryFlag({
     super.key,
     required this.size,
     required this.country,
+    this.shape = CountryFlagShape.circle,
   });
 
   final double? size;
   final Country? country;
+  final CountryFlagShape shape;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +28,16 @@ class CountryFlag extends StatelessWidget {
           width: 1.0,
         ),
       ),
-      child: ClipOval(
-        child: SvgPicture.asset(
-          country!.flagAssetPath,
-        ),
-      ),
+      child: shape == CountryFlagShape.square
+          ? SvgPicture.asset(
+              country!.flagAssetPath,
+              fit: BoxFit.cover,
+            )
+          : ClipOval(
+              child: SvgPicture.asset(
+                country!.flagAssetPath,
+              ),
+            ),
     );
   }
 }

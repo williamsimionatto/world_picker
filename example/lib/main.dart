@@ -56,9 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 showCurrencyCode: false,
                 showIsoCode: false,
                 showDialCode: true,
-                placeholder: 'Pesquisar...',
+                placeholder: 'Search...',
                 inputDecoration: InputDecoration(
-                  labelText: 'Pesquisar países',
+                  labelText: 'Search countries',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                   ),
@@ -67,14 +67,159 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 20),
-            Text(
-              'Selected Country: ${selectedCountry?.name ?? 'None'}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text('Total Countries: ${WorldPickerService.countries.length}'),
+            if (selectedCountry != null) ...[
+              Card(
+                elevation: 4,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey[200]!,
+                                  spreadRadius: 1,
+                                  blurRadius: 4,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: CountryFlag(
+                              size: 60,
+                              country: selectedCountry!,
+                              shape: CountryFlagShape.square,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  selectedCountry!.name,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'ISO Code: ${selectedCountry!.isoCode}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey.shade600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      _buildInfoRow(
+                        icon: Icons.phone,
+                        label: 'Dial code',
+                        value: selectedCountry!.dialCode,
+                      ),
+                      const SizedBox(height: 12),
+
+                      _buildInfoRow(
+                        icon: Icons.monetization_on,
+                        label:
+                            'Currenc${selectedCountry!.currencies.length > 1 ? 'ies' : 'y'}',
+                        value: selectedCountry!.currencies
+                            .map(
+                              (currency) =>
+                                  '${currency.name} (${currency.code}) ${currency.symbol}',
+                            )
+                            .join(', '),
+                      ),
+                      const SizedBox(height: 12),
+
+                      _buildInfoRow(
+                        icon: Icons.language,
+                        label:
+                            'Language${selectedCountry!.languages.length > 1 ? 's' : ''}',
+                        value: selectedCountry!.languages
+                            .map(
+                              (language) =>
+                                  '${language.name} (${language.nativeName})',
+                            )
+                            .join(', '),
+                      ),
+                      const SizedBox(height: 12),
+
+                      _buildInfoRow(
+                        icon: Icons.schedule,
+                        label:
+                            'Timezone${selectedCountry!.timezones.length > 1 ? 's' : ''}',
+                        value: selectedCountry!.timezones.join(', '),
+                      ),
+                      const SizedBox(height: 12),
+
+                      _buildInfoRow(
+                        icon: Icons.public,
+                        label: 'Continent',
+                        value: selectedCountry!.continent.name,
+                      ),
+
+                      if (selectedCountry!.zipCodePattern.isNotEmpty) ...[
+                        const SizedBox(height: 12),
+                        _buildInfoRow(
+                          icon: Icons.location_on,
+                          label: 'ZIP Code format',
+                          value: selectedCountry!.zipCodePattern,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildInfoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 20, color: Colors.deepPurple),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
