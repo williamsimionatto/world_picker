@@ -17,3 +17,6 @@
 
 ## 0.1.0+5
 - Updated documentation to include new features and usage examples.
+
+## 0.1.1+5
+- Updated documentation to include new features and usage examples.
