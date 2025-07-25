@@ -1,0 +1,14 @@
+{
+  "roots": [
+    "world_picker"
+  ],
+  "packages": [
+    {
+      "name": "world_picker",
+      "version": "0.0.1",
+      "dependencies": [],
+      "devDependencies": []
+    }
+  ],
+  "configVersion": 1
+}

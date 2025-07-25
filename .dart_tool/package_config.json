@@ -1,0 +1,16 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "world_picker",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.8.1",
+  "flutterRoot": "file:///Users/williamsimionatto/Devlopment/flutter",
+  "flutterVersion": "3.32.5",
+  "pubCache": "file:///Users/williamsimionatto/.pub-cache"
+}
