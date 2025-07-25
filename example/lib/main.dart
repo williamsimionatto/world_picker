@@ -67,6 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 20),
+            Text(
+              'Selected Country: ${selectedCountry?.name ?? 'None'}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text('Total Countries: ${WorldPickerService.countries.length}'),
           ],
         ),
       ),
