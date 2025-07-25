@@ -14,3 +14,4 @@ environment:
 flutter:
   assets:
     - assets/flags/
+    - assets/data/
