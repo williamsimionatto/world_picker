@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:world_picker/widgets/world_picker.dart';
+
 import 'package:world_picker/world_picker.dart';
 
 void main() {
@@ -34,10 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('World Picker Test'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: const Text('World Picker Test')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -46,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             WorldPickerIcon(
               showIsoCode: false,
               showCurrencyCode: false,
-              showName: true,
+              showName: false,
               onSelect: (country) {
                 setState(() {
                   selectedCountry = country;
@@ -55,10 +53,19 @@ class _MyHomePageState extends State<MyHomePage> {
               selectedCountry: selectedCountry,
               options: WorldPickerOptions(
                 showCurrencyCode: false,
-                showIsoCode: true,
+                showIsoCode: false,
+                showDialCode: true,
                 placeholder: 'Pesquisar...',
+                inputDecoration: InputDecoration(
+                  labelText: 'Pesquisar países',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  prefixIcon: Icon(Icons.search),
+                ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

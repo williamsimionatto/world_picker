@@ -1,5 +1,6 @@
-import 'package:world_picker/data/south_amarecia_countries.dart';
-import '../model/country_model.dart';
+import 'package:world_picker/data/data.dart';
+
+import '../model/model.dart';
 
 /// Service responsible for loading and managing country data.
 class WorldPickerService {
@@ -17,6 +18,9 @@ class WorldPickerService {
 
     return [
       ...southAmericaCountries(),
+      ...centralAmericaCountries(),
+      ...northAmericaCountries(),
+      ...oceaniaCountries()
     ]..sort((a, b) => a.name.compareTo(b.name));
   }
 

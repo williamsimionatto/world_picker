@@ -5,12 +5,16 @@ import 'package:world_picker/world_picker.dart';
 class WorldPickerOptions {
   final bool showIsoCode;
   final bool showCurrencyCode;
+  final bool showDialCode;
   final String? placeholder;
+  final InputDecoration? inputDecoration;
 
   const WorldPickerOptions({
     this.placeholder,
     this.showIsoCode = false,
     this.showCurrencyCode = false,
+    this.inputDecoration,
+    this.showDialCode = false,
   });
 }
 
@@ -55,11 +59,12 @@ class _WorldPickerState extends State<WorldPicker> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
-              decoration: InputDecoration(
-                labelText: widget.options.placeholder ?? 'Search countries',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.search),
-              ),
+              decoration: widget.options.inputDecoration ??
+                  InputDecoration(
+                    labelText: widget.options.placeholder ?? 'Search countries',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.search),
+                  ),
               onChanged: _filterCountries,
             ),
           ),
@@ -103,6 +108,14 @@ class _WorldPickerState extends State<WorldPicker> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                            if (widget.options.showDialCode)
+                              Text(
+                                country.dialCode,
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
                             if (widget.options.showIsoCode)
                               Text(
                                 country.isoCode,
