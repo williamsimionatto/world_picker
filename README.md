@@ -102,6 +102,11 @@ WorldPickerIcon(
 )
 ```
 
+### Screen Recordings
+
+#### WorldPickerIcon Demo
+https://github.com/user-attachments/assets/23a378ab-5fb1-4077-bd96-ce69bda1cac1
+
 ### WorldPickerOptions
 
 Configuration options for customizing the country picker dialog.
