@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 10"><path fill="#078930" d="M0 0h20v10H0z"/><path fill="#fff" d="M0 0h20v7H0z"/><path d="M0 0h20v3H0z"/><path fill="#da121a" d="M0 3.5h20v3H0z"/><path fill="#0f47af" d="M0 0l8.66 5L0 10z"/><path d="M1.22 5l3.015.98-1.863-2.565v3.17L4.235 4.02z" fill="#fcdd09"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5.12 85.333 341.333 341.333">
+<rect y="85.337" fill="#FFFFFF" width="512" height="341.326"/>
+<rect y="322.783" fill="#496E2D" width="512" height="103.88"/>
+<rect y="85.337" fill="#000" width="512" height="104.515"/>
+<rect y="210.877" fill="#A2001D" width="512" height="89.656"/>
+<polygon fill="#0052B4" points="256,256.006 0,426.668 0,85.331 "/>
+<polygon fill="#FFDA44" points="73.178,209.188 94.009,238.255 128.093,227.425 106.886,256.22 127.716,285.289   93.777,274.018 72.569,302.812 72.803,267.05 38.863,255.777 72.946,244.947 "/>
+</svg>

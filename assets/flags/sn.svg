@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 600"><path fill="#00853f" d="M0 0h300v600H0z"/><path fill="#fdef42" d="M300 0h300v600H300z"/><path fill="#e31b23" d="M600 0h300v600H600z"/><g transform="translate(450 300)" fill="#00853f"><g id="b"><path id="a" d="M0-100V0h50z" transform="rotate(18 0 -100)"/><use xlink:href="#a" transform="scale(-1 1)"/></g><use xlink:href="#b" transform="rotate(72)"/><use xlink:href="#b" transform="rotate(144)"/><use xlink:href="#b" transform="rotate(216)"/><use xlink:href="#b" transform="rotate(288)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="85.333 85.333 341.333 341.333">
+<rect y="85.331" fill="#FFDA44" width="512" height="341.326"/>
+<rect x="330.207" y="85.331" fill="#D80027" width="181.793" height="341.337"/>
+<g>
+	<rect y="85.331" fill="#496E2D" width="181.793" height="341.337"/>
+	<polygon fill="#496E2D" points="255.999,196.632 270.732,241.979 318.417,241.979 279.841,270.008 294.575,315.356    255.999,287.33 217.422,315.356 232.159,270.008 193.583,241.979 241.264,241.979  "/>
+</g>
+</svg>
