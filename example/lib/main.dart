@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               showIsoCode: false,
               showCurrencyCode: false,
               showName: false,
+              showDialCode: true,
               onSelect: (country) {
                 setState(() {
                   selectedCountry = country;

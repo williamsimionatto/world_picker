@@ -2,7 +2,6 @@ library world_picker;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:world_picker/world_picker.dart';
 
@@ -13,6 +12,7 @@ class WorldPickerIcon extends StatelessWidget {
   final bool showIsoCode;
   final bool showName;
   final bool showCurrencyCode;
+  final bool showDialCode;
   final String defaultCountryIsoCode;
   final WorldPickerOptions options;
 
@@ -24,6 +24,7 @@ class WorldPickerIcon extends StatelessWidget {
     this.showIsoCode = false,
     this.showName = false,
     this.showCurrencyCode = false,
+    this.showDialCode = false,
     this.defaultCountryIsoCode = 'US',
     this.options = const WorldPickerOptions(),
   });
@@ -43,15 +44,9 @@ class WorldPickerIcon extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClipOval(
-                child: SizedBox(
-                  width: size,
-                  height: size,
-                  child: SvgPicture.asset(
-                    selectedCountry?.flagAssetPath ??
-                        defaultCountry.flagAssetPath,
-                  ),
-                ),
+              CountryFlag(
+                size: size,
+                country: selectedCountry ?? defaultCountry,
               ),
               const SizedBox(width: 8.0),
               Visibility(
@@ -79,6 +74,16 @@ class WorldPickerIcon extends StatelessWidget {
                 child: Text(
                   selectedCountry?.currencies.first.code ??
                       defaultCountry.currencies.first.code,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: showDialCode,
+                child: Text(
+                  selectedCountry?.dialCode ?? defaultCountry.dialCode,
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w500,

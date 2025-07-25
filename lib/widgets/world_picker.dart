@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:world_picker/world_picker.dart';
 
 class WorldPickerOptions {
@@ -86,15 +86,9 @@ class _WorldPickerState extends State<WorldPicker> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        ClipOval(
-                          child: SizedBox(
-                            width: widget.size,
-                            height: widget.size,
-                            child: SvgPicture.asset(
-                              country.flagAssetPath,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                        CountryFlag(
+                          size: widget.size,
+                          country: country,
                         ),
                         const SizedBox(width: 16.0),
                         Column(

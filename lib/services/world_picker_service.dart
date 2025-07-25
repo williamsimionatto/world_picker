@@ -16,12 +16,7 @@ class WorldPickerService {
   static List<Country> loadCountries() {
     if (_countries != null) return _countries!;
 
-    return [
-      ...southAmericaCountries(),
-      ...centralAmericaCountries(),
-      ...northAmericaCountries(),
-      ...oceaniaCountries()
-    ]..sort((a, b) => a.name.compareTo(b.name));
+    return allCountries()..sort((a, b) => a.name.compareTo(b.name));
   }
 
   /// Finds a country by its ISO code.
