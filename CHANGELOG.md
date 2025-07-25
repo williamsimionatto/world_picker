@@ -11,3 +11,6 @@
 - Included example usage in `example/lib/main.dart`.
 - Added comprehensive API reference in README.
 - Enhanced README with comprehensive package details, features, and usage examples.
+
+## 0.1.0+4
+- Updated documentation to reflect changes in API methods.

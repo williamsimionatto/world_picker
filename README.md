@@ -142,13 +142,13 @@ Utility service for country operations:
 Country? country = WorldPickerService.fromIsoCode('BR');
 
 // Get all countries
-List<Country> allCountries = WorldPickerService.getAllCountries();
+List<Country> allCountries = WorldPickerService.continents();
 
 // Get countries by continent
-List<Country> asianCountries = WorldPickerService.getCountriesByContinent('AS');
+List<Country> asianCountries = WorldPickerService.fromContinentCode('AS');
 
 // Search countries
-List<Country> results = WorldPickerService.searchCountries('united');
+List<Country> results = WorldPickerService.fromCountryName('united');
 ```
 
 ## 🌍 Supported Countries
