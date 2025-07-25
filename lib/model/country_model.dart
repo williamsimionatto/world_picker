@@ -143,38 +143,67 @@ class Currency {
   int get hashCode => code.hashCode ^ name.hashCode ^ symbol.hashCode;
 }
 
-/// Represents a country with its details.
+/// Represents a country with comprehensive metadata and information.
+///
+/// This class contains all relevant information about a country including
+/// its geographical location, languages, currencies, contact information,
+/// and administrative details.
+///
+/// Example usage:
+/// ```dart
+/// Country brazil = Country(
+///   name: 'Brazil',
+///   isoCode: 'BR',
+///   continent: southAmerica,
+///   languages: [portuguese],
+///   currencies: [real],
+///   dialCode: '+55',
+///   // ... other properties
+/// );
+/// ```
 class Country {
-  /// The name of the country (e.g., 'Brazil').
+  /// The official name of the country (e.g., 'Brazil', 'United States').
   final String name;
 
-  /// The ISO 3166-1 alpha-2 country code (e.g., 'BR').
+  /// The ISO 3166-1 alpha-2 country code (e.g., 'BR', 'US').
+  /// This is a standardized two-letter code used internationally.
   final String isoCode;
 
-  /// The continent where the country is located.
+  /// The continent where the country is geographically located.
   final Continent continent;
 
-  /// The list of languages spoken in the country.
+  /// The list of official languages spoken in the country.
+  /// Multiple languages indicate multilingual countries.
   final List<Language> languages;
 
-  /// The list of currencies used in the country.
+  /// The list of official currencies used in the country.
+  /// Some countries may have multiple currencies.
   final List<Currency> currencies;
 
-  /// The international dialing code (e.g., '+55').
+  /// The international dialing code used for phone calls (e.g., '+55', '+1').
+  /// Also known as country calling code.
   final String dialCode;
 
-  /// The phone number pattern for the country.
+  /// A regex pattern for validating phone numbers in this country.
+  /// Used for input validation and formatting.
   final String phonePattern;
 
-  /// The zip code pattern for the country.
+  /// A regex pattern for validating postal/ZIP codes in this country.
+  /// Empty string indicates no standardized postal code system.
   final String zipCodePattern;
 
-  /// The list of timezones in the country.
+  /// The list of IANA timezone identifiers used in the country.
+  /// Countries spanning multiple time zones will have multiple entries.
   final List<String> timezones;
 
-  /// The asset path for the country's flag image.
+  /// The asset path to the country's flag image (SVG format).
+  /// Used for displaying the flag in the UI.
   final String flagAssetPath;
 
+  /// Creates a new [Country] instance.
+  ///
+  /// All parameters except [timezones] are required. The [timezones] parameter
+  /// defaults to an empty list if not provided.
   Country({
     required this.isoCode,
     required this.name,
@@ -188,11 +217,17 @@ class Country {
     required this.flagAssetPath,
   });
 
-  /// Returns the primary language (first in the list).
+  /// Returns the primary language (first in the list) or null if none exist.
+  ///
+  /// This is useful when you need a single language to represent the country,
+  /// typically the most widely spoken or official language.
   Language? get primaryLanguage =>
       languages.isNotEmpty ? languages.first : null;
 
-  /// Returns the primary currency (first in the list).
+  /// Returns the primary currency (first in the list) or null if none exist.
+  ///
+  /// This is useful when you need a single currency to represent the country,
+  /// typically the main or most commonly used currency.
   Currency? get primaryCurrency =>
       currencies.isNotEmpty ? currencies.first : null;
 
