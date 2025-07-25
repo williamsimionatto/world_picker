@@ -1,6 +1,6 @@
 name: world_picker
 description: Country selector and metadata provider with flags, currency, and more.
-version: 0.0.1+2
+version: 0.1.0+3
 
 homepage: https://github.com/williamsimionatto/world_picker
 repository: https://github.com/williamsimionatto/world_picker
