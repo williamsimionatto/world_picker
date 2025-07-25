@@ -5,7 +5,7 @@ library world_picker;
 export 'model/country_model.dart';
 
 // Export services
-export 'services/country_service.dart';
+export 'services/world_picker_service.dart';
 
 // Export widgets
 export 'widgets/widgets.dart';

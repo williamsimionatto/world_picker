@@ -1,65 +1,29 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:world_picker/data/south_amarecia_countries.dart';
 import '../model/country_model.dart';
 
 /// Service responsible for loading and managing country data.
-class CountryService {
-  static const String _countriesJsonPath =
-      'packages/world_picker/assets/data/countries.json';
-
+class WorldPickerService {
   /// Cached list of countries to avoid repeated file reads.
-  static List<Country>? _cachedCountries;
+  static List<Country>? _countries;
 
   /// Loads all countries from the JSON asset file.
   ///
   /// Returns a list of [Country] objects parsed from the JSON data.
   /// The result is cached after the first load for better performance.
-  static Future<List<Country>> loadCountries() async {
-    if (_cachedCountries != null) {
-      return _cachedCountries!;
-    }
+  static List<Country> loadCountries() {
+    if (_countries != null) return _countries!;
 
-    try {
-      // Verifica se o arquivo existe e não está vazio
-      final String jsonString = await rootBundle.loadString(_countriesJsonPath);
-
-      if (jsonString.isEmpty) {
-        throw Exception(
-            'Countries JSON file is empty at path: $_countriesJsonPath');
-      }
-
-      final List<dynamic> jsonList = json.decode(jsonString);
-
-      if (jsonList.isEmpty) {
-        throw Exception('Countries JSON file contains an empty array');
-      }
-
-      _cachedCountries = jsonList
-          .map((json) => Country.fromJson(json as Map<String, dynamic>))
-          .toList();
-
-      return _cachedCountries!;
-    } on FormatException catch (e) {
-      throw Exception('Invalid JSON format in countries file: $e');
-    } on Exception catch (e) {
-      if (e.toString().contains('Unable to load asset')) {
-        throw Exception('Asset file not found: $_countriesJsonPath. '
-            'Make sure the file exists and is properly declared in pubspec.yaml. '
-            'Original error: $e');
-      }
-      rethrow;
-    } catch (e) {
-      throw Exception(
-          'Failed to load countries data from $_countriesJsonPath: $e');
-    }
+    return [
+      ...southAmericaCountries(),
+    ]..sort((a, b) => a.name.compareTo(b.name));
   }
 
   /// Finds a country by its ISO code.
   ///
   /// [isoCode] - The 2-letter ISO country code (e.g., 'BR', 'US').
   /// Returns the [Country] if found, null otherwise.
-  static Future<Country?> fromIsoCode(String isoCode) async {
-    final countries = await loadCountries();
+  static Country? fromIsoCode(String isoCode) {
+    final countries = loadCountries();
     try {
       return countries.firstWhere(
         (country) => country.isoCode.toUpperCase() == isoCode.toUpperCase(),
@@ -69,15 +33,15 @@ class CountryService {
     }
   }
 
-  /// Finds countries by region code.
+  /// Finds countries by continent code.
   ///
-  /// [regionCode] - The region code (e.g., 'SA', 'EU', 'AS').
-  /// Returns a list of countries in the specified region.
-  static Future<List<Country>> fromRegionCode(String regionCode) async {
-    final countries = await loadCountries();
+  /// [continentCode] - The continent code (e.g., 'SA', 'EU', 'AS').
+  /// Returns a list of countries in the specified continent.
+  static List<Country> fromContinentCode(String continentCode) {
+    final countries = loadCountries();
     return countries
         .where((country) =>
-            country.region.code.toUpperCase() == regionCode.toUpperCase())
+            country.continent.code.toUpperCase() == continentCode.toUpperCase())
         .toList();
   }
 
@@ -85,10 +49,10 @@ class CountryService {
   ///
   /// [query] - The search query string.
   /// Returns a list of countries whose names contain the query string.
-  static Future<List<Country>> fromCountryName(String query) async {
+  static List<Country> fromCountryName(String query) {
     if (query.isEmpty) return [];
 
-    final countries = await loadCountries();
+    final countries = loadCountries();
     final lowercaseQuery = query.toLowerCase();
 
     return countries
@@ -98,23 +62,23 @@ class CountryService {
 
   /// Gets all unique regions from the countries data.
   ///
-  /// Returns a list of unique [Region] objects.
-  static Future<List<Region>> regions() async {
-    final countries = await loadCountries();
-    final regionMap = <String, Region>{};
+  /// Returns a list of unique [Continent] objects.
+  static List<Continent> continents() {
+    final countries = loadCountries();
+    final continentMap = <String, Continent>{};
 
     for (final country in countries) {
-      regionMap[country.region.code] = country.region;
+      continentMap[country.continent.code] = country.continent;
     }
 
-    return regionMap.values.toList();
+    return continentMap.values.toList();
   }
 
   /// Gets all unique languages from the countries data.
   ///
   /// Returns a list of unique [Language] objects.
-  static Future<List<Language>> languages() async {
-    final countries = await loadCountries();
+  static List<Language> languages() {
+    final countries = loadCountries();
     final languageMap = <String, Language>{};
 
     for (final country in countries) {
@@ -129,8 +93,8 @@ class CountryService {
   /// Gets all unique currencies from the countries data.
   ///
   /// Returns a list of unique [Currency] objects.
-  static Future<List<Currency>> currencies() async {
-    final countries = await loadCountries();
+  static List<Currency> currencies() {
+    final countries = loadCountries();
     final currencyMap = <String, Currency>{};
 
     for (final country in countries) {
@@ -146,12 +110,12 @@ class CountryService {
   ///
   /// This will force the next call to [loadCountries] to reload from the asset file.
   static void clearCache() {
-    _cachedCountries = null;
+    _countries = null;
   }
 
   /// Gets the total count of countries.
-  static Future<int> countriesCount() async {
-    final countries = await loadCountries();
+  static int countriesCount() {
+    final countries = loadCountries();
     return countries.length;
   }
 
@@ -159,8 +123,8 @@ class CountryService {
   ///
   /// [currencyCode] - The 3-letter currency code (e.g., 'USD', 'EUR').
   /// Returns a list of countries that use the specified currency.
-  static Future<List<Country>> fromCurrency(String currencyCode) async {
-    final countries = await loadCountries();
+  static List<Country> fromCurrency(String currencyCode) {
+    final countries = loadCountries();
     return countries
         .where((country) => country.currencies.any((currency) =>
             currency.code.toUpperCase() == currencyCode.toUpperCase()))
@@ -171,8 +135,8 @@ class CountryService {
   ///
   /// [languageCode] - The language code (e.g., 'en', 'es', 'pt').
   /// Returns a list of countries that have the specified language.
-  static Future<List<Country>> fromLanguage(String languageCode) async {
-    final countries = await loadCountries();
+  static List<Country> fromLanguage(String languageCode) {
+    final countries = loadCountries();
     return countries
         .where((country) => country.languages.any((language) =>
             language.code.toLowerCase().startsWith(languageCode.toLowerCase())))

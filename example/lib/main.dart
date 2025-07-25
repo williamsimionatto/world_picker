@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     try {
-      final countries = await CountryService.loadCountries();
+      final countries = WorldPickerService.loadCountries();
       setState(() {
         _status =
             '✅ Sucesso! ${countries.length} países carregados.\n'

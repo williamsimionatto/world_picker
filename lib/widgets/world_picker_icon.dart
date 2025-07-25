@@ -34,28 +34,8 @@ class _WorldPickerIconState extends State<WorldPickerIcon> {
   @override
   void initState() {
     super.initState();
-    _loadCountries();
-  }
 
-  Future<void> _loadCountries() async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
-
-    try {
-      final countries = await CountryService.loadCountries();
-      print('Loaded ${countries.length} countries');
-      setState(() {
-        _countries = countries;
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        _errorMessage = e.toString();
-        _isLoading = false;
-      });
-    }
+    _countries = WorldPickerService.loadCountries();
   }
 
   @override

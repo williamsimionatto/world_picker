@@ -1,19 +1,19 @@
-/// Represents a geographical region of a country.
-class Region {
-  /// The region code (e.g., 'SA' for South America).
+/// Represents a geographical continent.
+class Continent {
+  /// The continent code (e.g., 'SA' for South America).
   final String code;
 
-  /// The name of the region (e.g., 'South America').
+  /// The name of the continent (e.g., 'South America').
   final String name;
 
-  Region({
+  Continent({
     required this.code,
     required this.name,
   });
 
-  /// Creates a Region instance from a JSON map.
-  factory Region.fromJson(Map<String, dynamic> json) {
-    return Region(
+  /// Creates a Continent instance from a JSON map.
+  factory Continent.fromJson(Map<String, dynamic> json) {
+    return Continent(
       code: json['code'] as String,
       name: json['name'] as String,
     );
@@ -33,7 +33,7 @@ class Region {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is Region && other.code == code && other.name == name;
+    return other is Continent && other.code == code && other.name == name;
   }
 
   @override
@@ -151,8 +151,8 @@ class Country {
   /// The ISO 3166-1 alpha-2 country code (e.g., 'BR').
   final String isoCode;
 
-  /// The region where the country is located.
-  final Region region;
+  /// The continent where the country is located.
+  final Continent continent;
 
   /// The list of languages spoken in the country.
   final List<Language> languages;
@@ -178,58 +178,15 @@ class Country {
   Country({
     required this.isoCode,
     required this.name,
-    required this.region,
+    required this.continent,
     required this.languages,
     required this.currencies,
     required this.dialCode,
     required this.phonePattern,
     required this.zipCodePattern,
-    required this.timezones,
+    this.timezones = const [],
     required this.flagAssetPath,
   });
-
-  /// Creates a Country instance from a JSON map.
-  factory Country.fromJson(Map<String, dynamic> json) {
-    return Country(
-      isoCode: json['isoCode'] as String,
-      name: json['name'] as String,
-      region: Region.fromJson(json['region'] as Map<String, dynamic>),
-      languages: (json['languages'] as List<dynamic>)
-          .map(
-              (language) => Language.fromJson(language as Map<String, dynamic>))
-          .toList(),
-      currencies: (json['currencies'] as List<dynamic>)
-          .map(
-              (currency) => Currency.fromJson(currency as Map<String, dynamic>))
-          .toList(),
-      dialCode: json['dialCode'] as String,
-      phonePattern: json['phonePattern'] as String,
-      zipCodePattern: json['zipCodePattern'] as String,
-      timezones: (json['timezones'] as List<dynamic>)
-          .map((timezone) => timezone as String)
-          .toList(),
-      flagAssetPath: json['flagAssetPath'] as String,
-    );
-  }
-
-  /// Converts the Country instance to a JSON map.
-  Map<String, dynamic> toJson() {
-    return {
-      'isoCode': isoCode,
-      'name': name,
-      'region': region.toJson(),
-      'languages': languages.map((language) => language.toJson()).toList(),
-      'currencies': currencies.map((currency) => currency.toJson()).toList(),
-      'dialCode': dialCode,
-      'phonePattern': phonePattern,
-      'zipCodePattern': zipCodePattern,
-      'timezones': timezones,
-      'flagAssetPath': flagAssetPath,
-    };
-  }
-
-  /// Returns the formatted dial code with '+' prefix.
-  String get formattedDialCode => '+$dialCode';
 
   /// Returns the primary language (first in the list).
   Language? get primaryLanguage =>
@@ -239,18 +196,9 @@ class Country {
   Currency? get primaryCurrency =>
       currencies.isNotEmpty ? currencies.first : null;
 
-  /// Returns true if the country uses multiple languages.
-  bool get isMultilingual => languages.length > 1;
-
-  /// Returns true if the country uses multiple currencies.
-  bool get hasMultipleCurrencies => currencies.length > 1;
-
-  /// Returns true if the country spans multiple timezones.
-  bool get hasMultipleTimezones => timezones.length > 1;
-
   @override
   String toString() {
-    return 'Country(name: $name, isoCode: $isoCode, region: ${region.name})';
+    return 'Country(name: $name, isoCode: $isoCode, continent: ${continent.name})';
   }
 
   @override
