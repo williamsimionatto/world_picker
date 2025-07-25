@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:world_picker/widgets/world_picker.dart';
 import 'package:world_picker/world_picker.dart';
 
 void main() {
@@ -28,30 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _status = 'Clique no botão para testar';
-  bool _isLoading = false;
-
-  Future<void> _testLoadCountries() async {
-    setState(() {
-      _isLoading = true;
-      _status = 'Carregando países...';
-    });
-
-    try {
-      final countries = WorldPickerService.loadCountries();
-      setState(() {
-        _status =
-            '✅ Sucesso! ${countries.length} países carregados.\n'
-            'Primeiro país: ${countries.first.name} (${countries.first.isoCode})';
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        _status = '❌ Erro: $e';
-        _isLoading = false;
-      });
-    }
-  }
+  late Country? selectedCountry = WorldPickerService.fromIsoCode('US');
 
   @override
   Widget build(BuildContext context) {
@@ -65,42 +43,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(
-              onPressed: _isLoading ? null : _testLoadCountries,
-              child: _isLoading
-                  ? const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        ),
-                        SizedBox(width: 8),
-                        Text('Carregando...'),
-                      ],
-                    )
-                  : const Text('Testar Carregamento de Países'),
-            ),
-            const SizedBox(height: 16),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  _status,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Text('Widget WorldPickerIcon:'),
             WorldPickerIcon(
+              showIsoCode: false,
+              showCurrencyCode: false,
+              showName: true,
               onSelect: (country) {
                 setState(() {
-                  _status =
-                      'País selecionado: ${country.name} (${country.isoCode})';
+                  selectedCountry = country;
                 });
               },
+              selectedCountry: selectedCountry,
+              options: WorldPickerOptions(
+                showCurrencyCode: false,
+                showIsoCode: true,
+                placeholder: 'Pesquisar...',
+              ),
             ),
           ],
         ),

@@ -1,61 +1,116 @@
 library world_picker;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:world_picker/world_picker.dart';
 
-class WorldPickerIcon extends StatefulWidget {
+class WorldPickerIcon extends StatelessWidget {
   final ValueChanged<Country> onSelect;
   final Country? selectedCountry;
   final double? size;
   final bool showIsoCode;
   final bool showName;
   final bool showCurrencyCode;
+  final String defaultCountryIsoCode;
+  final WorldPickerOptions options;
 
   const WorldPickerIcon({
     super.key,
     required this.onSelect,
     this.selectedCountry,
-    this.size,
+    this.size = 32.0,
     this.showIsoCode = false,
     this.showName = false,
     this.showCurrencyCode = false,
+    this.defaultCountryIsoCode = 'US',
+    this.options = const WorldPickerOptions(),
   });
 
   @override
-  State<WorldPickerIcon> createState() => _WorldPickerIconState();
-}
+  Widget build(BuildContext context) {
+    final defaultCountry = WorldPickerService.defaultCountry();
 
-class _WorldPickerIconState extends State<WorldPickerIcon> {
-  late List<Country> _countries;
-  bool _isLoading = false;
-  String? _errorMessage;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _countries = WorldPickerService.loadCountries();
+    return GestureDetector(
+      onTap: () {
+        _openCountryPicker(context);
+      },
+      child: Row(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ClipOval(
+                child: SizedBox(
+                  width: size,
+                  height: size,
+                  child: SvgPicture.asset(
+                    selectedCountry?.flagAssetPath ??
+                        defaultCountry.flagAssetPath,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8.0),
+              Visibility(
+                visible: showName,
+                child: Text(
+                  selectedCountry?.name ?? defaultCountry.name,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: showIsoCode,
+                child: Text(
+                  selectedCountry?.isoCode ?? defaultCountry.isoCode,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: showCurrencyCode,
+                child: Text(
+                  selectedCountry?.currencies.first.code ??
+                      defaultCountry.currencies.first.code,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(width: 8.0),
+          Icon(
+            CupertinoIcons.chevron_down,
+            size: 16.0,
+            color: Theme.of(context).iconTheme.color,
+          ),
+        ],
+      ),
+    );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        width: widget.size,
-        height: widget.size,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: _isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : _errorMessage != null
-                ? Center(child: Text('Error: $_errorMessage'))
-                : widget.selectedCountry != null
-                    ? Text('test')
-                    : const Icon(Icons.public, size: 24, color: Colors.grey),
-      ),
+  void _openCountryPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: Colors.white,
+      builder: (context) {
+        return WorldPicker(
+            key: Key('world_picker'),
+            countries: WorldPickerService.countries,
+            size: size,
+            onSelect: onSelect,
+            options: options);
+      },
     );
   }
 }

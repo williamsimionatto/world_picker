@@ -60,9 +60,7 @@ flutter:
   uses-material-design: true
 
   # Assets from the world_picker package
-  assets:
-    - packages/world_picker/assets/data/
-    - packages/world_picker/assets/flags/
+  # assets:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

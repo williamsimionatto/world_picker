@@ -6,6 +6,8 @@ class WorldPickerService {
   /// Cached list of countries to avoid repeated file reads.
   static List<Country>? _countries;
 
+  static List<Country> get countries => loadCountries();
+
   /// Loads all countries from the JSON asset file.
   ///
   /// Returns a list of [Country] objects parsed from the JSON data.
@@ -50,7 +52,7 @@ class WorldPickerService {
   /// [query] - The search query string.
   /// Returns a list of countries whose names contain the query string.
   static List<Country> fromCountryName(String query) {
-    if (query.isEmpty) return [];
+    if (query.isEmpty) return loadCountries();
 
     final countries = loadCountries();
     final lowercaseQuery = query.toLowerCase();
@@ -141,5 +143,25 @@ class WorldPickerService {
         .where((country) => country.languages.any((language) =>
             language.code.toLowerCase().startsWith(languageCode.toLowerCase())))
         .toList();
+  }
+
+  static Country defaultCountry() {
+    return fromIsoCode('BR') ??
+        Country(
+          name: 'Brazil',
+          isoCode: 'BR',
+          flagAssetPath: 'assets/flags/br.svg',
+          continent: Continent(code: 'SA', name: 'South America'),
+          languages: [
+            Language(code: 'pt', name: 'Portuguese', nativeName: 'Português')
+          ],
+          currencies: [
+            Currency(code: 'BRL', name: 'Brazilian Real', symbol: 'R\$'),
+          ],
+          dialCode: '+55',
+          phonePattern: r'^\+55 \(\d{2}\) \d{4,5}-\d{4}$',
+          zipCodePattern: r'^\d{5}-\d{3}$',
+          timezones: ['America/Sao_Paulo'],
+        );
   }
 }
