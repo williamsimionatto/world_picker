@@ -1,6 +1,6 @@
 name: world_picker
 description: Country selector and metadata provider with flags, currency, and more.
-version: 0.1.0+4
+version: 0.1.1+5
 
 homepage: https://github.com/williamsimionatto/world_picker
 repository: https://github.com/williamsimionatto/world_picker
@@ -19,4 +19,3 @@ dependencies:
 flutter:
   assets:
     - assets/flags/
-    - assets/data/
