@@ -200,7 +200,6 @@ class _WorldPickerPhoneNumberFieldState
       inputFormatters: <TextInputFormatter>[
         WorldPickerPhoneNumberTextInputFormatter(
             isoCode: selectedCountry.isoCode),
-        FilteringTextInputFormatter.deny(RegExp(r'[\s]')),
         ...?widget.inputFormatters,
       ],
       onChanged: (value) {
