@@ -1,4 +1,4 @@
-import 'package:world_picker/world_picker.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 /// Class responsible for validating phone numbers according to the country's pattern.
 ///
@@ -18,24 +18,17 @@ class WorldPickerPhoneNumberValidation {
     String? phoneNumber,
     bool isRequired = true,
   }) {
-    final country = WorldPickerService.fromIsoCode(isoCode);
-
-    if (country == null) {
-      return false;
-    }
-
     if (isRequired && (phoneNumber == null || phoneNumber.isEmpty)) {
       return false;
     }
 
-    final phoneNumberPattern = country.phonePattern;
+    try {
+      final phone = PhoneNumber.parse(phoneNumber!,
+          destinationCountry: IsoCode.fromJson(isoCode));
 
-    if (phoneNumberPattern.isEmpty) {
+      return phone.isValid();
+    } catch (e) {
       return false;
     }
-
-    final RegExp phoneRegex = RegExp(phoneNumberPattern);
-
-    return phoneRegex.hasMatch(phoneNumber!) && phoneNumber.isNotEmpty;
   }
 }

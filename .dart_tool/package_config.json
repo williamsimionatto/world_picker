@@ -80,6 +80,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "phone_numbers_parser",
+      "rootUri": "file:///Users/williamsimionatto/.pub-cache/hosted/pub.dev/phone_numbers_parser-9.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/williamsimionatto/Devlopment/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",

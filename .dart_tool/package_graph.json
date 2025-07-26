@@ -8,9 +8,17 @@
       "version": "0.1.1+5",
       "dependencies": [
         "flutter",
-        "flutter_svg"
+        "flutter_svg",
+        "phone_numbers_parser"
       ],
       "devDependencies": []
+    },
+    {
+      "name": "phone_numbers_parser",
+      "version": "9.0.3",
+      "dependencies": [
+        "meta"
+      ]
     },
     {
       "name": "flutter_svg",
@@ -34,6 +42,11 @@
         "sky_engine",
         "vector_math"
       ]
+    },
+    {
+      "name": "meta",
+      "version": "1.16.0",
+      "dependencies": []
     },
     {
       "name": "vector_graphics_compiler",
@@ -79,11 +92,6 @@
     {
       "name": "vector_math",
       "version": "2.1.4",
-      "dependencies": []
-    },
-    {
-      "name": "meta",
-      "version": "1.16.0",
       "dependencies": []
     },
     {

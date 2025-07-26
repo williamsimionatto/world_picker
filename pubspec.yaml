@@ -15,6 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.0
+  phone_numbers_parser: ^9.0.3
 
 flutter:
   assets:
