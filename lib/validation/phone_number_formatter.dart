@@ -14,7 +14,7 @@ class WorldPickerPhoneNumberFormatter {
       }
 
       return phone.formatNsn(
-        format: NsnFormat.international,
+        format: NsnFormat.national,
         isoCode: IsoCode.fromJson(isoCode),
       );
     } catch (e) {

@@ -110,9 +110,8 @@ class WorldPickerPhoneNumberField extends StatefulWidget {
     this.inputFormatters,
   }) {
     assert(
-      (controller != null && initialValue == null) ||
-          (controller == null && initialValue != null),
-      'Either controller or initialValue must be provided, but not both.',
+      controller == null || initialValue == null,
+      'Cannot provide both controller and initialValue.',
     );
   }
 
