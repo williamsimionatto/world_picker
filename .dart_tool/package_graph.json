@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "world_picker",
-      "version": "0.1.1+5",
+      "version": "1.0.0",
       "dependencies": [
         "flutter",
         "flutter_svg",

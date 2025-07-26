@@ -190,7 +190,6 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 20),
               PhoneNumberField(
                 onPhoneNumberChanged: (phoneNumber) {
-                  print('Selected Phone Number: $phoneNumber');
                   setState(() {
                     selectedCountry = phoneNumber.country;
                   });
