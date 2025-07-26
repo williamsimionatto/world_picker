@@ -142,21 +142,5 @@ List<Country> caribbeanCountries() {
       timezones: ['America/St_Kitts'],
       flagAssetPath: 'packages/world_picker/assets/flags/KN.svg',
     ),
-    Country(
-      isoCode: 'CU',
-      name: 'Cuba',
-      continent: continent,
-      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
-      currencies: [
-        Currency(code: 'CUP', name: 'Cuban Peso', symbol: '\u000024'),
-        Currency(
-            code: 'CUC', name: 'Cuban Convertible Peso', symbol: 'CUC\u000024')
-      ],
-      dialCode: '+53',
-      phonePattern: r'^\+53\d{8}$',
-      zipCodePattern: r'^\d{5}$',
-      timezones: ['America/Havana'],
-      flagAssetPath: 'packages/world_picker/assets/flags/CU.svg',
-    ),
   ];
 }

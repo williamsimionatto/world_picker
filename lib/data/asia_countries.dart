@@ -291,21 +291,6 @@ List<Country> asiaCountries() {
       flagAssetPath: 'packages/world_picker/assets/flags/BH.svg',
     ),
     Country(
-      isoCode: 'CY',
-      name: 'Cyprus',
-      continent: continent,
-      languages: [
-        Language(code: 'el', name: 'Greek', nativeName: 'Ελληνικά'),
-        Language(code: 'tr', name: 'Turkish', nativeName: 'Türkçe')
-      ],
-      currencies: [Currency(code: 'EUR', name: 'Euro', symbol: '€')],
-      dialCode: '+357',
-      phonePattern: r'^\+357\d{8}$',
-      zipCodePattern: r'^\d{4}$',
-      timezones: ['Asia/Nicosia'],
-      flagAssetPath: 'packages/world_picker/assets/flags/CY.svg',
-    ),
-    Country(
       isoCode: 'GE',
       name: 'Georgia',
       continent: continent,

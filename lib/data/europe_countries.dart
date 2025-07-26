@@ -84,18 +84,6 @@ List<Country> europeCountries() {
       flagAssetPath: 'packages/world_picker/assets/flags/GB.svg',
     ),
     Country(
-      isoCode: 'RU',
-      name: 'Russia',
-      continent: continent,
-      languages: [Language(code: 'ru', name: 'Russian', nativeName: 'Русский')],
-      currencies: [Currency(code: 'RUB', name: 'Ruble', symbol: '₽')],
-      dialCode: '+7',
-      phonePattern: r'^\+7(\d{3})(\d{3})(\d{4})$',
-      zipCodePattern: r'^\d{6}$',
-      timezones: ['Europe/Moscow'],
-      flagAssetPath: 'packages/world_picker/assets/flags/RU.svg',
-    ),
-    Country(
       isoCode: 'UA',
       name: 'Ukraine',
       continent: continent,

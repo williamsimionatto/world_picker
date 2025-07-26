@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:world_picker/model/model.dart';
 import 'package:world_picker/world_picker.dart';
 
-import 'package:world_picker/validation/phone_number_text_input_formatter.dart';
-
 /// A widget that allows users to input and validate phone numbers.
 ///
 /// It uses the [PhoneNumber] model to represent the phone number
@@ -202,7 +200,6 @@ class _WorldPickerPhoneNumberFieldState
       inputFormatters: <TextInputFormatter>[
         WorldPickerPhoneNumberTextInputFormatter(
             isoCode: selectedCountry.isoCode),
-        FilteringTextInputFormatter.deny(RegExp(r'[\s]')),
         ...?widget.inputFormatters,
       ],
       onChanged: (value) {
