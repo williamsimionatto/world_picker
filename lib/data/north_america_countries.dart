@@ -49,18 +49,6 @@ List<Country> northAmericaCountries() {
       flagAssetPath: 'packages/world_picker/assets/flags/MX.svg',
     ),
     Country(
-      isoCode: 'GT',
-      name: 'Guatemala',
-      continent: continent,
-      languages: [Language(code: 'es', name: 'Spanish', nativeName: 'Español')],
-      currencies: [Currency(code: 'GTQ', name: 'Quetzal', symbol: 'Q')],
-      dialCode: '+502',
-      phonePattern: r'^\+502\d{8}$',
-      zipCodePattern: r'^\d{5}$',
-      timezones: ['America/Guatemala'],
-      flagAssetPath: 'packages/world_picker/assets/flags/GT.svg',
-    ),
-    Country(
       isoCode: 'CU',
       name: 'Cuba',
       continent: continent,
