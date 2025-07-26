@@ -4,6 +4,7 @@
 /// - [WorldPickerIcon]: Interactive icon for country selection
 /// - [WorldPicker]: Full country picker widget with search
 /// - [CountryFlag]: Flag display widget with customizable shapes
+library widgets;
 
 export './world_picker_icon.dart';
 export './world_picker.dart';

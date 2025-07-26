@@ -14,3 +14,9 @@
 
 ## 0.1.0+4
 - Updated documentation to reflect changes in API methods.
+
+## 0.1.0+5
+- Updated documentation to include new features and usage examples.
+
+## 0.1.1+5
+- Fixed typos and improved clarity in the documentation introduced in version 0.1.0+5.
