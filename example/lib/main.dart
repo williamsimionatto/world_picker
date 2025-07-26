@@ -188,7 +188,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
               const SizedBox(height: 20),
-              PhoneNumberField(
+              WorldPickerPhoneNumberField(
+                keyboardType: TextInputType.phone,
                 onPhoneNumberChanged: (phoneNumber) {
                   setState(() {
                     selectedCountry = phoneNumber.country;

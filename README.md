@@ -164,7 +164,7 @@ List<Country> results = WorldPickerService.fromCountryName('united');
 ```dart
 import 'package:world_picker/world_picker.dart';
 
-PhoneNumberField(
+WorldPickerPhoneNumberField(
   onPhoneNumberChanged: (phoneNumber) {
     print('Number: \${phoneNumber.phoneNumber}, Country: \${phoneNumber.isoCode}');
   },

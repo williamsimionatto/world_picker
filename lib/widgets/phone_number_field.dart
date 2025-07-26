@@ -10,7 +10,7 @@ import 'package:world_picker/validation/phone_number_text_input_formatter.dart';
 ///
 /// It uses the [PhoneNumber] model to represent the phone number
 /// and its associated country ISO code.
-class PhoneNumberField extends StatefulWidget {
+class WorldPickerPhoneNumberField extends StatefulWidget {
   /// The controller for managing the text input.
   final TextEditingController? controller;
 
@@ -66,7 +66,7 @@ class PhoneNumberField extends StatefulWidget {
   final bool enableIMEPersonalizedLearning;
   final List<TextInputFormatter>? inputFormatters;
 
-  PhoneNumberField({
+  WorldPickerPhoneNumberField({
     super.key,
     this.controller,
     required this.onPhoneNumberChanged,
@@ -117,10 +117,12 @@ class PhoneNumberField extends StatefulWidget {
   }
 
   @override
-  State<PhoneNumberField> createState() => _PhoneNumberFieldState();
+  State<WorldPickerPhoneNumberField> createState() =>
+      _WorldPickerPhoneNumberFieldState();
 }
 
-class _PhoneNumberFieldState extends State<PhoneNumberField> {
+class _WorldPickerPhoneNumberFieldState
+    extends State<WorldPickerPhoneNumberField> {
   bool get selectionEnabled => widget.enableInteractiveSelection;
 
   late Country selectedCountry;
@@ -201,6 +203,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       inputFormatters: <TextInputFormatter>[
         WorldPickerPhoneNumberTextInputFormatter(
             isoCode: selectedCountry.isoCode),
+        FilteringTextInputFormatter.deny(RegExp(r'[\s]')),
         ...?widget.inputFormatters,
       ],
       onChanged: (value) {
