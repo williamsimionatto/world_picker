@@ -20,3 +20,9 @@
 
 ## 0.1.1+5
 - Fixed typos and improved clarity in the documentation introduced in version 0.1.0+5.
+
+## 1.0.0
+- Added `PhoneNumberField` widget for phone number input with country selection.
+- Implemented `WorldPickerPhoneNumberTextInputFormatter` for phone number formatting based on selected country.
+- Enhanced `WorldPickerIcon` to support phone number validation.
+- Updated `pubspec.yaml` with new versioning and dependencies.

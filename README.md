@@ -17,6 +17,7 @@ A comprehensive Flutter package for country selection with detailed metadata inc
 - 🌍 **Regional Organization**: Countries organized by continents
 - 🔍 **Search & Filter**: Powerful search functionality
 - 🎨 **Customizable UI**: Flexible theming and styling options
+ - 📱 **Phone Number Field**: Input and validate phone numbers with country picker integration
 
 ## 📦 Installation
 
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 ```
 
 ## 📖 API Reference
@@ -154,6 +156,27 @@ List<Country> asianCountries = WorldPickerService.fromContinentCode('AS');
 
 // Search countries
 List<Country> results = WorldPickerService.fromCountryName('united');
+```
+
+
+### Phone Number Field Quick Start
+
+```dart
+import 'package:world_picker/world_picker.dart';
+
+WorldPickerPhoneNumberField(
+  onPhoneNumberChanged: (phoneNumber) {
+    print('Number: \${phoneNumber.phoneNumber}, Country: \${phoneNumber.isoCode}');
+  },
+  options: WorldPickerOptions(
+    placeholder: 'Enter your number...',
+    showDialCode: true,
+  ),
+  decoration: InputDecoration(
+    labelText: 'Phone',
+    border: OutlineInputBorder(),
+  ),
+)
 ```
 
 ## 🌍 Supported Countries
