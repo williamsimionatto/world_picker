@@ -171,7 +171,6 @@ class WorldPickerIcon extends StatelessWidget {
               onSelect: onSelect,
               options: options,
               scrollController: scrollController,
-              // Adiciona o scrollController para permitir o arrasto
             );
           },
         );

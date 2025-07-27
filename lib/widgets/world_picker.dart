@@ -22,7 +22,7 @@ class WorldPickerOptions {
   /// Custom input decoration for the search field.
   final InputDecoration? inputDecoration;
 
-  /// Lista de isoCodes dos países favoritos.
+  /// List of ISO codes for favorite countries.
   final List<String> favoriteCountries;
 
   /// Creates a new [WorldPickerOptions] instance.
@@ -44,9 +44,6 @@ class WorldPickerOptions {
 /// allowing users to filter and select countries. The appearance can
 /// be customized using [WorldPickerOptions].
 class WorldPicker extends StatefulWidget {
-  /// Controlador de rolagem para integração com DraggableScrollableSheet.
-  final ScrollController? scrollController;
-
   /// The list of countries to display in the picker.
   final List<Country> countries;
 
@@ -59,13 +56,17 @@ class WorldPicker extends StatefulWidget {
   /// Configuration options for the picker display and behavior.
   final WorldPickerOptions options;
 
+  /// Scroll controller for integration with DraggableScrollableSheet.
+  final ScrollController? scrollController;
+
   /// Creates a new [WorldPicker] widget.
   ///
   /// [countries] is the list of countries to display.
-  /// [favoriteCountries] lista de isoCodes dos países favoritos.
+  /// [favoriteCountries] list contains ISO codes of countries to show at the top.
   /// [size] determines the flag size.
   /// [onSelect] is called when a country is selected.
   /// [options] provides display customization.
+  /// [scrollController] is used for scrolling behavior in a bottom sheet.
   const WorldPicker({
     super.key,
     required this.countries,

@@ -73,9 +73,11 @@ class WorldPickerService {
   ///
   /// This method retrieves all countries whose ISO codes match any
   /// of the provided codes, ignoring case.
-  /// /// [isoCodes] A list of ISO 3166-1 alpha-2 codes (e.g., ['BR', 'US']).
-  /// /// Returns a [List<Country>] containing all matching countries.
-  /// /// Example:
+  /// [isoCodes] A list of ISO 3166-1 alpha-2 codes (e.g., ['BR', 'US']).
+  ///
+  /// Returns a [List<Country>] containing all matching countries.
+  ///
+  /// Example:
   /// ```dart
   /// List<Country> selectedCountries = WorldPickerService.fromIsoCodes(['BR', 'US']);
   /// // Returns: Brazil, United States
