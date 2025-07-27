@@ -147,13 +147,34 @@ class WorldPickerIcon extends StatelessWidget {
       context: context,
       showDragHandle: true,
       backgroundColor: Colors.white,
+      isDismissible: true,
+      enableDrag: true,
+      isScrollControlled: true,
+      elevation: 8.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(12.0),
+        ),
+      ),
       builder: (context) {
-        return WorldPicker(
-            key: Key('world_picker'),
-            countries: WorldPickerService.countries,
-            size: size,
-            onSelect: onSelect,
-            options: options);
+        return DraggableScrollableSheet(
+          expand: false,
+          snap: true,
+          initialChildSize: 0.7,
+          minChildSize: 0.4,
+          maxChildSize: 0.95,
+          builder: (context, scrollController) {
+            return WorldPicker(
+              key: Key('world_picker'),
+              countries: WorldPickerService.countries,
+              size: size,
+              onSelect: onSelect,
+              options: options,
+              scrollController: scrollController,
+              // Adiciona o scrollController para permitir o arrasto
+            );
+          },
+        );
       },
     );
   }
