@@ -104,5 +104,20 @@ List<Country> northAmericaCountries() {
       timezones: ['America/Santo_Domingo'],
       flagAssetPath: 'packages/world_picker/assets/flags/DO.svg',
     ),
+    Country(
+      isoCode: 'GL',
+      name: 'Greenland',
+      continent: continent,
+      languages: [
+        Language(code: 'kl', name: 'Greenlandic', nativeName: 'Kalaallisut'),
+        Language(code: 'da', name: 'Danish', nativeName: 'Dansk')
+      ],
+      currencies: [Currency(code: 'DKK', name: 'Danish Krone', symbol: 'kr')],
+      dialCode: '+299',
+      phonePattern: r'^\+299\d{6}$',
+      zipCodePattern: r'^39\d{2}$',
+      timezones: ['America/Godthab'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GL.svg',
+    ),
   ];
 }
