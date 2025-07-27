@@ -22,6 +22,9 @@ class WorldPickerOptions {
   /// Custom input decoration for the search field.
   final InputDecoration? inputDecoration;
 
+  /// Lista de isoCodes dos países favoritos.
+  final List<String> favoriteCountries;
+
   /// Creates a new [WorldPickerOptions] instance.
   ///
   /// All display options default to `false` if not specified.
@@ -31,6 +34,7 @@ class WorldPickerOptions {
     this.showCurrencyCode = false,
     this.inputDecoration,
     this.showDialCode = false,
+    this.favoriteCountries = const [],
   });
 }
 
@@ -40,6 +44,9 @@ class WorldPickerOptions {
 /// allowing users to filter and select countries. The appearance can
 /// be customized using [WorldPickerOptions].
 class WorldPicker extends StatefulWidget {
+  /// Controlador de rolagem para integração com DraggableScrollableSheet.
+  final ScrollController? scrollController;
+
   /// The list of countries to display in the picker.
   final List<Country> countries;
 
@@ -55,6 +62,7 @@ class WorldPicker extends StatefulWidget {
   /// Creates a new [WorldPicker] widget.
   ///
   /// [countries] is the list of countries to display.
+  /// [favoriteCountries] lista de isoCodes dos países favoritos.
   /// [size] determines the flag size.
   /// [onSelect] is called when a country is selected.
   /// [options] provides display customization.
@@ -64,6 +72,7 @@ class WorldPicker extends StatefulWidget {
     required this.size,
     required this.onSelect,
     this.options = const WorldPickerOptions(),
+    this.scrollController,
   });
 
   @override
@@ -71,18 +80,39 @@ class WorldPicker extends StatefulWidget {
 }
 
 class _WorldPickerState extends State<WorldPicker> {
-  late List<Country> _filteredCountries;
+  late List<Country> _favoriteCountries;
+  late List<Country> _othersCountries;
 
   @override
   void initState() {
     super.initState();
-    _filteredCountries = widget.countries;
+    _sortCountries(widget.countries);
   }
 
   void _filterCountries(String value) {
+    final filtered = value.isEmpty
+        ? widget.countries
+        : WorldPickerService.fromCountryName(value)
+            .where((c) => widget.countries.contains(c))
+            .toList();
+
     setState(() {
-      _filteredCountries = WorldPickerService.fromCountryName(value);
+      _sortCountries(filtered);
     });
+  }
+
+  List<Country> _sortCountries(List<Country> countries) {
+    _favoriteCountries =
+        WorldPickerService.fromIsoCodes(widget.options.favoriteCountries)
+            .where((c) => countries.contains(c))
+            .toList();
+
+    _othersCountries = countries
+        .where((c) =>
+            !widget.options.favoriteCountries.contains(c.isoCode.toUpperCase()))
+        .toList();
+
+    return [..._favoriteCountries, ..._othersCountries];
   }
 
   @override
@@ -104,72 +134,100 @@ class _WorldPickerState extends State<WorldPicker> {
           ),
           const Divider(height: 1),
           Expanded(
-            child: ListView.separated(
-              itemCount: _filteredCountries.length,
-              separatorBuilder: (_, __) => Divider(height: 1),
-              itemBuilder: (context, index) {
-                final country = _filteredCountries[index];
-                return InkWell(
-                  onTap: () {
-                    widget.onSelect(country);
-                    Navigator.of(context).pop();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CountryFlag(
-                          size: widget.size,
-                          country: country,
-                        ),
-                        const SizedBox(width: 16.0),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              country.name,
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            if (widget.options.showDialCode)
-                              Text(
-                                country.dialCode,
-                                style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                            if (widget.options.showIsoCode)
-                              Text(
-                                country.isoCode,
-                                style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                            if (widget.options.showCurrencyCode)
-                              Text(
-                                country.currencies.first.code,
-                                style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                          ],
-                        ),
-                      ],
+            child: Builder(
+              builder: (context) {
+                final List<Widget> children = [];
+                if (_favoriteCountries.isNotEmpty) {
+                  children.addAll(_favoriteCountries
+                      .map((country) => _buildCountryTile(country)));
+                }
+
+                if (_favoriteCountries.isNotEmpty &&
+                    _othersCountries.isNotEmpty) {
+                  children.add(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey[400],
+                      ),
                     ),
-                  ),
+                  );
+                }
+
+                if (_othersCountries.isNotEmpty) {
+                  children.addAll(_othersCountries
+                      .map((country) => _buildCountryTile(country)));
+                }
+
+                return ListView(
+                  controller: widget.scrollController,
+                  children: children,
                 );
               },
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _buildCountryTile(Country country) {
+    return InkWell(
+      onTap: () {
+        widget.onSelect(country);
+        Navigator.of(context).pop();
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            CountryFlag(
+              size: widget.size,
+              country: country,
+            ),
+            const SizedBox(width: 16.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  country.name,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                if (widget.options.showDialCode)
+                  Text(
+                    country.dialCode,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                if (widget.options.showIsoCode)
+                  Text(
+                    country.isoCode,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                if (widget.options.showCurrencyCode)
+                  Text(
+                    country.currencies.first.code,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

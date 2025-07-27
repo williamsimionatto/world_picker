@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     prefixIcon: Icon(Icons.search),
                   ),
+                  favoriteCountries: ['US', 'BR', 'FR', 'IN'],
                 ),
               ),
               const SizedBox(height: 20),

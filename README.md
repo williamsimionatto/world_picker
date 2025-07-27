@@ -100,6 +100,7 @@ WorldPickerIcon(
     placeholder: 'Search countries...',
     showCurrencyCode: true,
     showDialCode: true,
+    favoriteCountries: ['US', 'BR', 'IN'],
   ),
 )
 ```
@@ -120,6 +121,7 @@ Configuration options for customizing the country picker dialog.
 | `showIsoCode`     | `bool`                  | Show ISO codes in the country list                         | `true`  |
 | `showDialCode`    | `bool`                  | Show dial codes in the country list                        | `false` |
 | `inputDecoration` | `InputDecoration?`      | Custom decoration for the search input field               | `null`  |
+| `favoriteCountries` | `List<String>?`       | List of ISO codes for favorite countries to show first     | `null`  |
 
 ### Country Model
 
