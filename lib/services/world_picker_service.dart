@@ -69,6 +69,24 @@ class WorldPickerService {
     }
   }
 
+  /// Finds countries by a list of ISO codes.
+  ///
+  /// This method retrieves all countries whose ISO codes match any
+  /// of the provided codes, ignoring case.
+  /// /// [isoCodes] A list of ISO 3166-1 alpha-2 codes (e.g., ['BR', 'US']).
+  /// /// Returns a [List<Country>] containing all matching countries.
+  /// /// Example:
+  /// ```dart
+  /// List<Country> selectedCountries = WorldPickerService.fromIsoCodes(['BR', 'US']);
+  /// // Returns: Brazil, United States
+  /// ```
+  static List<Country> fromIsoCodes(List<String> isoCodes) {
+    final countries = loadCountries();
+    return countries
+        .where((country) => isoCodes.contains(country.isoCode.toUpperCase()))
+        .toList();
+  }
+
   /// Retrieves all countries within a specific continent.
   ///
   /// The search is case-insensitive and uses continent codes:
