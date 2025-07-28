@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:world_picker/model/phone_number.dart';
-import 'package:world_picker/widgets/phone_number_field.dart';
 
 import 'package:world_picker/world_picker.dart';
 
