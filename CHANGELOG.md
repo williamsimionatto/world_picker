@@ -1,3 +1,6 @@
+## 1.1.1
+- Fixed export in `widgets.dart` to include `PhoneNumberField`. 
+
 ## 1.1.0
 - Added `Greenland` as a selectable country.
 - Implemented `favoriteCountries` parameter in `WorldPickerIcon` for displaying favorite countries.
