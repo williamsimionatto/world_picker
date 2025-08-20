@@ -97,6 +97,56 @@ List<Country> europeCountries() {
       timezones: ['Europe/Kiev'],
       flagAssetPath: 'packages/world_picker/assets/flags/UA.svg',
     ),
+    // Escócia
+    Country(
+      isoCode: 'GB-SCT',
+      name: 'Scotland',
+      continent: continent,
+      languages: [
+        Language(code: 'en', name: 'English', nativeName: 'English'),
+        Language(code: 'gd', name: 'Scottish Gaelic', nativeName: 'Gàidhlig'),
+        Language(code: 'sco', name: 'Scots', nativeName: 'Scots'),
+      ],
+      currencies: [Currency(code: 'GBP', name: 'Pound Sterling', symbol: '£')],
+      dialCode: '+44',
+      phonePattern: r'^\+44(7\d{3})(\d{6})$',
+      zipCodePattern: r'^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$',
+      timezones: ['Europe/London'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GB-SCT.svg',
+    ),
+    // País de Gales
+    Country(
+      isoCode: 'GB-WLS',
+      name: 'Wales',
+      continent: continent,
+      languages: [
+        Language(code: 'en', name: 'English', nativeName: 'English'),
+        Language(code: 'cy', name: 'Welsh', nativeName: 'Cymraeg'),
+      ],
+      currencies: [Currency(code: 'GBP', name: 'Pound Sterling', symbol: '£')],
+      dialCode: '+44',
+      phonePattern: r'^\+44(7\d{3})(\d{6})$',
+      zipCodePattern: r'^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$',
+      timezones: ['Europe/London'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GB-WLS.svg',
+    ),
+    // Irlanda do Norte
+    Country(
+      isoCode: 'GB-NIR',
+      name: 'Northern Ireland',
+      continent: continent,
+      languages: [
+        Language(code: 'en', name: 'English', nativeName: 'English'),
+        Language(code: 'ga', name: 'Irish', nativeName: 'Gaeilge'),
+        Language(code: 'ul', name: 'Ulster Scots', nativeName: 'Ulstèr-Scotch'),
+      ],
+      currencies: [Currency(code: 'GBP', name: 'Pound Sterling', symbol: '£')],
+      dialCode: '+44',
+      phonePattern: r'^\+44(7\d{3})(\d{6})$',
+      zipCodePattern: r'^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$',
+      timezones: ['Europe/London'],
+      flagAssetPath: 'packages/world_picker/assets/flags/GB-NIR.svg',
+    ),
     Country(
       isoCode: 'PL',
       name: 'Poland',

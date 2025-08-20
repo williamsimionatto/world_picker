@@ -1,3 +1,6 @@
+## 1.1.2
+- Added support for selecting regions within the UK (Scotland, Wales, Northern Ireland).
+
 ## 1.1.1
 - Fixed export in `widgets.dart` to include `PhoneNumberField`. 
 
