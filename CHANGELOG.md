@@ -1,3 +1,6 @@
+## 1.1.4
+- Improved flag assets for UK regions.
+
 ## 1.1.3
 - Fixed phone number patterns for UK regions.
 
