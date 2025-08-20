@@ -1,3 +1,6 @@
+## 1.1.3
+- Fixed phone number patterns for UK regions.
+
 ## 1.1.2
 - Added support for selecting regions within the UK (Scotland, Wales, Northern Ireland).
 
