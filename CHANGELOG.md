@@ -1,3 +1,8 @@
+## 1.2.0
+- Implementd `CurrencyWorldPicker` and `CurrencyWorldPickerIcon` widgets for currency selection.
+- Updated `Currency` model to include country information.
+- Enhanced `WorldPickerService` to provide a list of currencies.
+
 ## 1.1.4
 - Improved flag assets for UK regions.
 

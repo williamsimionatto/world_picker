@@ -103,10 +103,18 @@ class Currency {
   /// The symbol of the currency (e.g., 'R$').
   final String symbol;
 
+  /// Lista de países que usam essa moeda (pode ser nula para compatibilidade).
+  final List<Country>? countries;
+
+  /// O país principal associado à moeda (para compatibilidade e exibição).
+  final Country? country;
+
   Currency({
     required this.code,
     required this.name,
     required this.symbol,
+    this.country,
+    this.countries,
   });
 
   /// Creates a Currency instance from a JSON map.
@@ -115,6 +123,7 @@ class Currency {
       code: json['code'] as String,
       name: json['name'] as String,
       symbol: json['symbol'] as String,
+      // Não carrega countries/country do JSON por padrão
     );
   }
 
@@ -124,6 +133,7 @@ class Currency {
       'code': code,
       'name': name,
       'symbol': symbol,
+      // Não serializa countries/country por padrão
     };
   }
 
@@ -141,6 +151,22 @@ class Currency {
 
   @override
   int get hashCode => code.hashCode ^ name.hashCode ^ symbol.hashCode;
+
+  Currency copyWith({
+    String? code,
+    String? name,
+    String? symbol,
+    Country? country,
+    List<Country>? countries,
+  }) {
+    return Currency(
+      code: code ?? this.code,
+      name: name ?? this.name,
+      symbol: symbol ?? this.symbol,
+      country: country ?? this.country,
+      countries: countries ?? this.countries,
+    );
+  }
 }
 
 /// Represents a country with comprehensive metadata and information.
