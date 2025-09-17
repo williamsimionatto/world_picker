@@ -11,3 +11,5 @@ export './world_picker_icon.dart';
 export './world_picker.dart';
 export './country_flag.dart';
 export './phone_number_field.dart';
+export './currency_world_picker_icon.dart';
+export './currency_world_picker.dart';

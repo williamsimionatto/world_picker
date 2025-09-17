@@ -31,6 +31,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Country? selectedCountry = WorldPickerService.fromIsoCode('US');
+  late Currency? selectedCurrency = WorldPickerService.fromCurrency(
+    'USD',
+  ).first.currencies.first;
+
   String? phoneNumberErrorMessage;
 
   @override
@@ -44,6 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              CurrencyWorldPickerIcon(
+                onSelect: (currency) {
+                  print(currency);
+                  setState(() {
+                    selectedCurrency = currency;
+                  });
+                },
+                size: 24,
+                selectedCurrency: selectedCurrency,
+              ),
+              const SizedBox(height: 20),
               WorldPickerIcon(
                 showIsoCode: false,
                 showCurrencyCode: false,

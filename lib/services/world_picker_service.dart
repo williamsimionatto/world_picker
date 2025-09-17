@@ -210,17 +210,44 @@ class WorldPickerService {
   /// List<Currency> allCurrencies = WorldPickerService.currencies();
   /// // Returns: USD, EUR, GBP, JPY, etc.
   /// ```
-  static List<Currency> currencies() {
+  static List<Currency> currencies({
+    String? name,
+    String? code,
+    String? symbol,
+  }) {
     final countries = loadCountries();
     final currencyMap = <String, Currency>{};
+    final currencyCountries = <String, List<Country>>{};
 
     for (final country in countries) {
       for (final currency in country.currencies) {
+        currencyCountries.putIfAbsent(currency.code, () => []).add(country);
         currencyMap[currency.code] = currency;
       }
     }
 
-    return currencyMap.values.toList();
+    final List<Currency> allCurrencies = [];
+    for (final entry in currencyMap.entries) {
+      final code = entry.key;
+      final baseCurrency = entry.value;
+      final countriesForCurrency = currencyCountries[code] ?? [];
+      allCurrencies.add(baseCurrency.copyWith(
+        countries: countriesForCurrency,
+      ));
+    }
+
+    final filtred = allCurrencies.where((currency) {
+      final matchesName = name == null ||
+          currency.name.toLowerCase().contains(name.toLowerCase());
+      final matchesCode = code == null ||
+          currency.code.toLowerCase().contains(code.toLowerCase());
+      final matchesSymbol = symbol == null ||
+          currency.symbol.toLowerCase().contains(symbol.toLowerCase());
+
+      return matchesName || matchesCode || matchesSymbol;
+    }).toList();
+
+    return filtred..sort((a, b) => a.name.compareTo(b.name));
   }
 
   /// Clears the cached countries data.
