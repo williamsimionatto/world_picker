@@ -50,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               CurrencyWorldPickerIcon(
                 onSelect: (currency) {
-                  print(currency);
                   setState(() {
                     selectedCurrency = currency;
                   });

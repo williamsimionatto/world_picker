@@ -49,7 +49,7 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
   final String defaultCountryIsoCode;
 
   /// Configuration options for customizing the country picker dialog.
-  final WorldPickerOptions options;
+  final CurrencyWorldPickerOptions options;
 
   /// Creates a [WorldPickerIcon] widget.
   ///
@@ -65,7 +65,7 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
     this.showCurrencyCode = false,
     this.showDialCode = false,
     this.defaultCountryIsoCode = 'US',
-    this.options = const WorldPickerOptions(),
+    this.options = const CurrencyWorldPickerOptions(),
   });
 
   @override
@@ -140,6 +140,7 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
                 onSelect(_);
               },
               size: 24,
+              options: options,
             );
           },
         );

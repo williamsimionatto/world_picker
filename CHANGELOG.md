@@ -1,5 +1,8 @@
+## 1.2.1
+- Fixed issue with `CurrencyWorldPickerIcon` not applying options correctly.
+
 ## 1.2.0
-- Implementd `CurrencyWorldPicker` and `CurrencyWorldPickerIcon` widgets for currency selection.
+- Implemented `CurrencyWorldPicker` and `CurrencyWorldPickerIcon` widgets for currency selection.
 - Updated `Currency` model to include country information.
 - Enhanced `WorldPickerService` to provide a list of currencies.
 
