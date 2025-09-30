@@ -287,6 +287,12 @@ class WorldPickerService {
         .toList();
   }
 
+  /// Return all languages
+  /// Return a [List<Language>] of all unique languages found across all countries.
+  static List<Language> loadLanguages() {
+    return supportedLanguages();
+  }
+
   static Country defaultCountry() {
     return fromIsoCode('BR') ??
         Country(

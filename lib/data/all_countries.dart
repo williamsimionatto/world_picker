@@ -8,7 +8,6 @@ List<Country> allCountries() {
     ...europeCountries(),
     ...northAmericaCountries(),
     ...centralAmericaCountries(),
-    ...caribbeanCountries(),
     ...oceaniaCountries(),
     ...southAmericaCountries(),
   ];

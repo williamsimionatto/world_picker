@@ -1,3 +1,8 @@
+## 1.3.0
+- Add method `WorldPickerService.loadLanguages()` to retrieve a list of supported languages.
+- Added Brazilian Portuguese (pt-BR) to the list of supported languages.
+- Move caribbean countries to central america countries file.
+
 ## 1.2.0
 - Implementd `CurrencyWorldPicker` and `CurrencyWorldPickerIcon` widgets for currency selection.
 - Updated `Currency` model to include country information.
