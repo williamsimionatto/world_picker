@@ -1,3 +1,6 @@
+## 1.3.1
+- Fixed conflict across versions.
+
 ## 1.3.0
 - Add method `WorldPickerService.loadLanguages()` to retrieve a list of supported languages.
 - Added Brazilian Portuguese (pt-BR) to the list of supported languages.
