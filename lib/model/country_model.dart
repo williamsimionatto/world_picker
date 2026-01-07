@@ -1,3 +1,5 @@
+import 'package:world_picker/services/world_picker_service.dart';
+
 /// Represents a geographical continent.
 class Continent {
   /// The continent code (e.g., 'SA' for South America).
@@ -51,10 +53,15 @@ class Language {
   /// The English name of the language (e.g., 'Portuguese').
   final String name;
 
+  /// The country code associated with the language (e.g., 'BR' for Brazil).
+  /// This is optional and may not be present for all languages.
+  final String? countryCode;
+
   Language({
     required this.code,
     required this.name,
     required this.nativeName,
+    this.countryCode,
   });
 
   /// Creates a Language instance from a JSON map.
@@ -63,6 +70,7 @@ class Language {
       code: json['code'] as String,
       name: json['name'] as String,
       nativeName: json['nativeName'] as String,
+      countryCode: json['countryCode'] as String?,
     );
   }
 
@@ -72,12 +80,17 @@ class Language {
       'code': code,
       'name': name,
       'nativeName': nativeName,
+      'countryCode': countryCode,
     };
   }
 
+  /// Returns the associated Country object if countryCode is present.
+  Country? get country =>
+      countryCode != null ? WorldPickerService.fromIsoCode(countryCode!) : null;
+
   @override
   String toString() =>
-      'Language(code: $code, name: $name, nativeName: $nativeName)';
+      'Language(code: $code, name: $name, nativeName: $nativeName, countryCode: $countryCode)';
 
   @override
   bool operator ==(Object other) {
@@ -85,11 +98,16 @@ class Language {
     return other is Language &&
         other.code == code &&
         other.name == name &&
-        other.nativeName == nativeName;
+        other.nativeName == nativeName &&
+        other.countryCode == countryCode;
   }
 
   @override
-  int get hashCode => code.hashCode ^ name.hashCode ^ nativeName.hashCode;
+  int get hashCode =>
+      code.hashCode ^
+      name.hashCode ^
+      nativeName.hashCode ^
+      countryCode.hashCode;
 }
 
 /// Represents a currency used in a country.

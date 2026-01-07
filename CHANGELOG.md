@@ -1,5 +1,14 @@
-## 1.2.2
+## 1.3.2
 - Added Antarctica to the list of selectable countries.
+
+## 1.3.1
+- Fixed conflict across versions.
+
+## 1.3.0
+- Add method `WorldPickerService.loadLanguages()` to retrieve a list of supported languages.
+- Added Brazilian Portuguese (pt-BR) to the list of supported languages.
+- Move caribbean countries to central america countries file.
+
 
 ## 1.2.1
 - Fixed issue with `CurrencyWorldPickerIcon` not applying options correctly.
