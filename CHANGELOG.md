@@ -1,3 +1,6 @@
+## 1.2.2
+- Added Antarctica to the list of selectable countries.
+
 ## 1.2.1
 - Fixed issue with `CurrencyWorldPickerIcon` not applying options correctly.
 
