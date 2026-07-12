@@ -1,3 +1,8 @@
+## 1.3.3
+- Added `currencies` parameter to `CurrencyWorldPickerIcon` to allow customizing the list of selectable currencies in the picker dialog.
+- Added `countries` parameter to `WorldPickerIcon` to allow customizing the list of selectable countries in the picker dialog.
+- Added `copyWith` method to the `Country` model.
+
 ## 1.3.2
 - Added Antarctica to the list of selectable countries.
 
