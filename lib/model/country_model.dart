@@ -275,6 +275,32 @@ class Country {
   Currency? get primaryCurrency =>
       currencies.isNotEmpty ? currencies.first : null;
 
+  Country copyWith({
+    String? name,
+    String? isoCode,
+    Continent? continent,
+    List<Language>? languages,
+    List<Currency>? currencies,
+    String? dialCode,
+    String? phonePattern,
+    String? zipCodePattern,
+    List<String>? timezones,
+    String? flagAssetPath,
+  }) {
+    return Country(
+      name: name ?? this.name,
+      isoCode: isoCode ?? this.isoCode,
+      continent: continent ?? this.continent,
+      languages: languages ?? this.languages,
+      currencies: currencies ?? this.currencies,
+      dialCode: dialCode ?? this.dialCode,
+      phonePattern: phonePattern ?? this.phonePattern,
+      zipCodePattern: zipCodePattern ?? this.zipCodePattern,
+      timezones: timezones ?? this.timezones,
+      flagAssetPath: flagAssetPath ?? this.flagAssetPath,
+    );
+  }
+
   @override
   String toString() {
     return 'Country(name: $name, isoCode: $isoCode, continent: ${continent.name})';

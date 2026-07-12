@@ -20,6 +20,7 @@ import 'package:world_picker/world_picker.dart';
 ///   selectedCountry: selectedCountry,
 ///   showIsoCode: true,
 ///   showDialCode: true,
+///   countries: [Country(isoCode: 'US', name: 'United States', ...)],
 /// )
 /// ```
 class WorldPickerIcon extends StatelessWidget {
@@ -51,6 +52,9 @@ class WorldPickerIcon extends StatelessWidget {
   /// Configuration options for customizing the country picker dialog.
   final WorldPickerOptions options;
 
+  /// A list of available countries to display in the picker dialog.
+  final List<Country> countries;
+
   /// Creates a [WorldPickerIcon] widget.
   ///
   /// The [onSelect] callback is required and will be called when a user
@@ -66,6 +70,7 @@ class WorldPickerIcon extends StatelessWidget {
     this.showDialCode = false,
     this.defaultCountryIsoCode = 'US',
     this.options = const WorldPickerOptions(),
+    this.countries = const [],
   });
 
   @override
@@ -166,7 +171,9 @@ class WorldPickerIcon extends StatelessWidget {
           builder: (context, scrollController) {
             return WorldPicker(
               key: Key('world_picker'),
-              countries: WorldPickerService.countries,
+              countries: countries.isNotEmpty
+                  ? countries
+                  : WorldPickerService.countries,
               size: size,
               onSelect: onSelect,
               options: options,

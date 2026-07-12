@@ -20,6 +20,7 @@ import 'package:world_picker/world_picker.dart';
 ///   selectedCountry: selectedCountry,
 ///   showIsoCode: true,
 ///   showDialCode: true,
+///   currencies: [Currency(code: 'USD', name: 'US Dollar', ...)],
 /// )
 /// ```
 class CurrencyWorldPickerIcon extends StatelessWidget {
@@ -51,6 +52,9 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
   /// Configuration options for customizing the country picker dialog.
   final CurrencyWorldPickerOptions options;
 
+  /// A list of available currencies to display in the picker dialog.
+  final List<Currency> currencies;
+
   /// Creates a [WorldPickerIcon] widget.
   ///
   /// The [onSelect] callback is required and will be called when a user
@@ -66,6 +70,7 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
     this.showDialCode = false,
     this.defaultCountryIsoCode = 'US',
     this.options = const CurrencyWorldPickerOptions(),
+    this.currencies = const [],
   });
 
   @override
@@ -135,7 +140,9 @@ class CurrencyWorldPickerIcon extends StatelessWidget {
           maxChildSize: 0.95,
           builder: (context, scrollController) {
             return CurrencyWorldPicker(
-              currencies: WorldPickerService.currencies(),
+              currencies: currencies.isNotEmpty
+                  ? currencies
+                  : WorldPickerService.currencies(),
               onSelect: (_) {
                 onSelect(_);
               },
