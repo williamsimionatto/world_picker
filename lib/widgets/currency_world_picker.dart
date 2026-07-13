@@ -74,15 +74,14 @@ class _CurrencyWorldPickerState extends State<CurrencyWorldPicker> {
   }
 
   void _filterCountries(String value) {
+    final query = value.toLowerCase();
     final filtered = value.isEmpty
         ? widget.currencies
-        : WorldPickerService.currencies(
-            code: value,
-            name: value,
-            symbol: value,
-          );
-
-    print(filtered);
+        : widget.currencies.where((currency) {
+            return currency.code.toLowerCase().contains(query) ||
+                currency.name.toLowerCase().contains(query) ||
+                currency.symbol.toLowerCase().contains(query);
+          }).toList();
 
     setState(() {
       _currencies = filtered;
