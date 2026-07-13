@@ -1,3 +1,6 @@
+## 1.3.4
+- Fixed `CurrencyWorldPicker` search filtering against the global currency list instead of the custom `currencies` list passed in.
+
 ## 1.3.3
 - Added `currencies` parameter to `CurrencyWorldPickerIcon` to allow customizing the list of selectable currencies in the picker dialog.
 - Added `countries` parameter to `WorldPickerIcon` to allow customizing the list of selectable countries in the picker dialog.
